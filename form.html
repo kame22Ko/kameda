@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>health first</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Lato:400,300,700,900" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Amoeba - v4.8.0
+  * Template URL: https://bootstrapmade.com/free-one-page-bootstrap-template-amoeba/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo me-auto">
+        <h1><a href="index.html">Health First</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="index.html">ホーム画面</a></li>
+          <li><a class="nav-link scrollto" href="#about">紹介</a></li>
+          <li><a class="nav-link scrollto" href="#services">サービス</a></li>
+          <li><a class="nav-link scrollto" href="form.html">お問い合わせ</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End #header -->
+  <main id="main">
+    <form method="post" name="form" onsubmit="return validate()"><center>
+      <h1 style="margin-top: 120px; margin-bottom: 10px;">お問い合わせ</h1>
+      <table>
+          <tr>
+              <th class="hissu"><label>氏名</label></th>
+              <td><input class="form-control" name="name1" type="text" value="" placeholder="氏名"></td>
+          </tr>
+          <tr>
+              <th class="ninni"><label>Mail</label></th>
+              <td><input  class="form-control" name="EMail" type="text" value="" placeholder="メールアドレス"></td>
+          </tr>
+          <tr>
+              <th class="ninni"><label>年齢</label></th>
+              <td><input class="form-control" name="age1" type="number" class="smallinput" value="" placeholder="年齢"></td>
+          </tr>
+          <tr>
+              <th class="hissu"><label>内容</label></th>
+              <td><textarea class="form-control" name="contents" value="" placeholder="内容"></textarea></td>
+          </tr>
+      </table>
+      <div class="buttonwrap">
+          <!-- <input type="button" class="btn btn-secondary" value="戻る">   -->
+          <!-- <input type="submit" formaction="http://localhost/kame/hair/index.html" value="送信する"> -->
+          <button type="submit" name="button" formaction="http://localhost/kame/index.html" class="btn btn-secondary"  style="width: 130px;">戻る</button>
+          <!-- <input type="submit" class="btn btn-danger" value="送信">   -->
+          <button type="submit" name="button" formaction="http://localhost/kame/form.php" class="btn btn-danger"style="width: 130px;" >送信</button>
+      </div>
+    </center></form>
+  </main>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
+<!--<option value=" " >お住いの都道府県を選択してください</option>
+        <option>北海道</option>
+        <option>青森県</option>
+        <option>岩手県</option>         
+        <option>宮城県</option>          
+        <option>秋田県</option>         
+        <option>山形県</option>          
+        <option>福島県</option>          
+        <option>茨城県</option>          
+        <option>栃木県</option>          
+        <option>群馬県</option>          
+        <option>埼玉県</option>         
+        <option>千葉県</option>          
+        <option>東京都</option>         
+        <option>神奈川</option>         
+        <option>新潟県</option>         
+        <option>富山県</option>         
+        <option>石川県</option>         
+        <option>福井県</option>          
+        <option>山梨県</option>
+        <option>長野県</option>         
+        <option>岐阜県</option>          
+        <option>静岡県</option>         
+        <option>愛知県</option>          
+        <option>三重県</option>         
+        <option>滋賀県</option>         
+        <option>京都府</option>         
+        <option>大阪府</option>        
+        <option>兵庫県</option>         
+        <option>奈良県</option>          
+        <option>和歌山</option>          
+        <option>鳥取県</option>         
+        <option>島根県</option>         
+        <option>岡山県</option>          
+        <option>広島県</option>          
+        <option>山口県</option>          
+        <option>徳島県</option>         
+        <option>香川県</option>          
+        <option>愛媛県</option>          
+        <option>高知県</option>         
+        <option>福岡県</option>          
+        <option>佐賀県</option>         
+        <option>長崎県</option>         
+        <option>熊本県</option>         
+        <option>大分県</option>         
+        <option>宮崎県</option>         
+        <option>鹿児島</option>         
+        <option>沖縄県</option>-->

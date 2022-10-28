@@ -1,0 +1,131 @@
+
+.calTable {
+	border-collapse: collapse;
+}
+
+.calTable td,
+.calTable th {
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	font-family: Verdana, Helvetica;
+	font-size: 10px;
+	color: #666666;
+	border: 1px solid #eeeeee;
+	margin: 0px;
+	padding: 0px;
+}
+
+.calTable th {
+	height: 20px;
+	background-color: #eeeeee;
+	text-align: center;
+	font-weight: normal;
+	border: 1px solid #e0e0e0;
+}
+
+.calTable td.mon {
+	width: 200px;
+	height: 30px;
+	font-size: 12px;
+	font-weight: bold;
+	border: 1px solid #e0e0e0;
+}
+
+.calTable td.btn {
+	height: 30px;
+	font-weight: bold;
+	border: 1px solid #e0e0e0;
+}
+
+.calTable td.sat {
+	background-color: #f0f6ff;
+	color: #4b86de;
+}
+
+.calTable td.sun {
+	background-color: #fff0f0;
+	color: #d63838;
+}
+
+.calTable td.today {
+	background-color: #ffffbb;
+	font-weight: bold;
+	color: #ff6600;
+}
+
+.calTable td.webJozu {
+	width: 280px;
+	height: 20px;
+	text-align: right;
+	padding-right:5px;
+}
+
+.calTable td.btn a {
+	display: block;
+	background-color: #f9f9f9;
+	width: 40px;
+	height: 21px;
+	color: #3366cc;
+	padding: 9px 0px 0px 0px;
+	text-decoration: none;
+}
+
+.calTable td.btn a:hover {
+	background-color: #BEDCFA;
+	text-decoration: underline;
+}
+
+.yView {
+	font-size: 10px;
+	font-weight: normal;
+	color: #999999;
+}
+
+.tbView {display:none;}
+
+.linkArea {
+	display: block;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	font-weight: bold;
+}
+
+a.linkArea:link,
+a.linkArea:visited {
+	color: #3366cc;
+}
+
+a.linkArea:hover {
+	background-color: #F5FCE4;
+}
+
+.linkPopup {
+	display: block;
+	position: absolute;
+	left: -6px;
+	top: 46px;
+	text-align: left;
+	visibility: visible;
+}
+
+.popTxt {
+	display: block;
+	background-color: #F5FCE4;
+	width: 120px;
+	font-size: 10px;
+	font-weight: normal;
+	line-height: 150%;
+	color: #666666;
+	border: 1px solid #DCEFAA;
+	padding: 4px 10px;
+}
+
+.popArrow {
+	font-size: 10px;
+	font-weight: bold;
+	line-height: 50%;
+	color: #DCEFAA;
+	padding-left: 21px;
+}
