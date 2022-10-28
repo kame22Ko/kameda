@@ -7,7 +7,9 @@ date_default_timezone_set('Asia/Tokyo');
 $time = new DateTime('now');
 // $time = $_POST['watch'];
 $time2 = $time->format("Y-m-d");
-$hiduke = 0;
+$h = 0;
+$h1 = 0;
+$h2 = 0;
 
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
@@ -131,58 +133,68 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                           </a>
                           <div class="media-body">
                               <h5><?= $images[$i]['image_name']; ?> (<?= number_format($images[$i]['image_size']/1000, 2); ?> KB)</h5>
-                              <a href="javascript:void(0);" onclick="var ok = confirm('削除しますか？'); if (ok) location.href='k_delete.php?id=<?= $images[$i]['id']; ?>'"><i class="far fa-trash-alt"></i> 削除</a>
                           </div>
-                          <img src="assets/img/portfolio/noPhoto.png" class="img-fluid" alt="">
+                          <?php $h += 1 ?>
                     </li>
                     <?php endif; ?>
                   <?php endfor; ?>
-              <h4>Walter White</h4>
-              <span>Chief Executive Officer</span>
+                  <?php if($h == 0) :?>
+                    <img src="assets/img/portfolio/noPhoto.png" class="img-fluid" alt="">
+                  <?php endif; ?>
+              
               <form  method="post" enctype="multipart/form-data">
                 <button type="submit" class="btn btn-primary">決定</button>
                 <input type="date" name="bbb" min="2022-01-01">
               </form>
-              <div class="social">
-                <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a>
-              </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6">
             <div class="member">
-              <img src="assets/img/team/team-2.jpg" alt="">
-              <h4>Sarah Jhinson</h4>
-              <span>Product Manager</span>
-              <p>
-                Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
-              </p>
-              <div class="social">
-                <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a>
-              </div>
+            <?php for($i = 0; $i < count($images); $i++): ?>
+                    <!-- 写真全部を取得 -->
+                    <?php if($images[$i]['food'] == "2") :?>
+                      <!-- $imagesに今日の日付＆foodが１，２，３の写真のデータが配列に入っている -->
+                      <!-- 今日の日付の写真がある場合に表示 -->
+                      <li class="media mt-5">
+                          <a href="#lightbox" data-toggle="modal" data-slide-to="<?= $i; ?>">
+                              <img src="k_image.php?id=<?= $images[$i]['id']; ?>" width="400" height="280" class="mr-3">
+                          </a>
+                          <div class="media-body">
+                              <h5><?= $images[$i]['image_name']; ?> (<?= number_format($images[$i]['image_size']/1000, 2); ?> KB)</h5>
+                          </div>
+                          <?php $h1 += 1 ?>
+                    </li>
+                    <?php endif; ?>
+                  <?php endfor; ?>
+                  <?php if($h1 == 0) :?>
+                    <img src="assets/img/portfolio/noPhoto.png" class="img-fluid" alt="">
+                  <?php endif; ?>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6">
             <div class="member">
-              <img src="assets/img/team/team-3.jpg" alt="">
-              <h4>William Anderson</h4>
-              <span>CTO</span>
-              <p>
-                Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
-              </p>
-              <div class="social">
-                <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a>
-              </div>
+              <?php for($i = 0; $i < count($images); $i++): ?>
+                <!-- 写真全部を取得 -->
+                <?php if($images[$i]['food'] == "3") :?>
+                  <!-- $imagesに今日の日付＆foodが１，２，３の写真のデータが配列に入っている -->
+                  <!-- 今日の日付の写真がある場合に表示 -->
+                  <li class="media mt-5">
+                      <a href="#lightbox" data-toggle="modal" data-slide-to="<?= $i; ?>">
+                          <img src="k_image.php?id=<?= $images[$i]['id']; ?>" width="400" height="280" class="mr-3">
+                      </a>
+                      <div class="media-body">
+                          <h5><?= $images[$i]['image_name']; ?> (<?= number_format($images[$i]['image_size']/1000, 2); ?> KB)</h5>
+                      </div>
+                      <?php $h2 += 1 ?>
+                    </li>
+                <?php endif; ?>
+              <?php endfor; ?>
+
+              <?php if($h2 == 0) :?>
+                <img src="assets/img/portfolio/noPhoto.png" class="img-fluid" alt="">
+              <?php endif; ?>
             </div>
           </div>
 
