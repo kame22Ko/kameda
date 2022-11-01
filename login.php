@@ -1,9 +1,6 @@
 <?php
 session_start();
 $mail = $_POST['mail'];
-// $dsn = "mysql:host=localhost; dbname=xxx; charset=utf8";
-// $username = "xxx";
-// $password = "xxx";
 try {
     $pdo = new PDO('mysql:dbname=KASEDASABA;host=localhost;charset=utf8','kame','kame');
 } catch (PDOException $e) {
@@ -22,7 +19,7 @@ if (password_verify($_POST['password'], $member['password'])) {
     $_SESSION['name'] = $member['name'];
     echo'ログインしました。';
     $link = '<a href="mein.php">ホーム</a>';
-    header('refresh:1;http://localhost/kame/hair/mypage_prot.html');
+    header('refresh:1;http://localhost/kame/mypage_prot.html');
     exit();
 } else {
     $msg = 'メールアドレスもしくはパスワードが間違っています。';

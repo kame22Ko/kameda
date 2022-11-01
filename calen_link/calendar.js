@@ -1,7 +1,7 @@
 
 /*
    -----------------------------------------------------
-   ƒJƒŒƒ“ƒ_[iƒŠƒ“ƒN‹@”\•t‚«j
+   ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼ï¼ˆãƒªãƒ³ã‚¯æ©Ÿèƒ½ä»˜ãï¼‰
    Ver. 1.0.2
    update 2011.3.5
    Copyright (C) WEB-JOZU  URL:http://www.web-jozu.com/
@@ -31,7 +31,7 @@ function showCalen(MM){
 
 function showTtl(MM,DD){
 	if(document.getElementById && this['link' + MM + 'MM']['d' + DD]['ttl']) {
-		document.getElementById('d' + MM + DD).innerHTML = '<span class="linkPopup"><span class="popArrow">¢</span><span class="popTxt">' + this['link' + MM + 'MM']['d' + DD]['ttl'] + '</span>';
+		document.getElementById('d' + MM + DD).innerHTML = '<span class="linkPopup"><span class="popArrow">â–³</span><span class="popTxt">' + this['link' + MM + 'MM']['d' + DD]['ttl'] + '</span>';
 	}
 }
 
@@ -50,7 +50,6 @@ function linkGo(MM,DD){
 	}else if(actObj == 1){
 		location.href = 'http://' + urlObj;
 
-	}else if(actObj == 2){
 		newWin1 = window.open('http://' + urlObj, null);
 		newWin1.focus();
 
@@ -61,7 +60,7 @@ function linkGo(MM,DD){
 }
 
 
-//ƒŠƒ“ƒN‚ğİ’è
+//ãƒªãƒ³ã‚¯ã‚’è¨­å®š
 for(i=1; i<=12; i++){
 	this['link' + i + 'MM'] = new Array;
 	this['link' + i + 'MM']['ok'] = "";
@@ -73,97 +72,97 @@ i = 0;
 
 
 
-/* ---------- İ’è—Ìˆæ start ---------- */
+/* ---------- è¨­å®šé ˜åŸŸ start ---------- */
 
-//ƒŠƒ“ƒN‚ğİ’è
-//linkdaySet(Œ,“ú,ƒEƒBƒ“ƒhƒE [0:ƒŠƒ“ƒN‚È‚µ, 1:©win, 2:•Êwin, 3:PopUpWin],ƒŠƒ“ƒNæ,à–¾)
+//ãƒªãƒ³ã‚¯ã‚’è¨­å®š
+//linkdaySet(æœˆ,æ—¥,ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ [0:ãƒªãƒ³ã‚¯ãªã—, 1:è‡ªwin, 2:åˆ¥win, 3:PopUpWin],ãƒªãƒ³ã‚¯å…ˆ,èª¬æ˜)
 
-linkdaySet(1,1,1,'www.yahoo.co.jp/','Yahoo!‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>©ƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(1,10,2,'www.google.com/','Google‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>•ÊƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(1,25,0,'','ƒŠƒ“ƒN‚Í‚µ‚Ü‚¹‚ñB<br>ƒƒbƒZ[ƒW‚Ì‚İ•\¦‚µ‚Ü‚·B<br>Ê^‚à“ü‚è‚Ü‚·B<br><img src="img/change_ph01.jpg" width="120" height="84" alt="Ê^" vspace="5">');
-linkdaySet(1,29,3,'www.goo.ne.jp/','goo‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>ƒ|ƒbƒvƒAƒbƒv‚ÅˆÚ“®‚µ‚Ü‚·B');
+linkdaySet(1,1,1,'localhost/kame/gallery.html#about','Yahoo!ã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>è‡ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(1,10,2,'www.google.com/','Googleã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>åˆ¥ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(1,25,0,'','ãƒªãƒ³ã‚¯ã¯ã—ã¾ã›ã‚“ã€‚<br>ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã¿è¡¨ç¤ºã—ã¾ã™ã€‚<br>å†™çœŸã‚‚å…¥ã‚Šã¾ã™ã€‚<br><img src="img/change_ph01.jpg" width="120" height="84" alt="å†™çœŸ" vspace="5">');
+linkdaySet(1,29,3,'www.goo.ne.jp/','gooã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ã§ç§»å‹•ã—ã¾ã™ã€‚');
 
-linkdaySet(2,8,1,'www.yahoo.co.jp/','Yahoo!‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>©ƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(2,15,2,'www.google.com/','Google‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>•ÊƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(2,20,0,'','ƒŠƒ“ƒN‚Í‚µ‚Ü‚¹‚ñB<br>ƒƒbƒZ[ƒW‚Ì‚İ•\¦‚µ‚Ü‚·B<br>Ê^‚à“ü‚è‚Ü‚·B<br><img src="img/change_ph01.jpg" width="120" height="84" alt="Ê^" vspace="5">');
-linkdaySet(2,25,3,'www.goo.ne.jp/','goo‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>ƒ|ƒbƒvƒAƒbƒv‚ÅˆÚ“®‚µ‚Ü‚·B');
+linkdaySet(2,8,1,'www.yahoo.co.jp/','Yahoo!ã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>è‡ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(2,15,2,'www.google.com/','Googleã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>åˆ¥ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(2,20,0,'','ãƒªãƒ³ã‚¯ã¯ã—ã¾ã›ã‚“ã€‚<br>ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã¿è¡¨ç¤ºã—ã¾ã™ã€‚<br>å†™çœŸã‚‚å…¥ã‚Šã¾ã™ã€‚<br><img src="img/change_ph01.jpg" width="120" height="84" alt="å†™çœŸ" vspace="5">');
+linkdaySet(2,25,3,'www.goo.ne.jp/','gooã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ã§ç§»å‹•ã—ã¾ã™ã€‚');
 
-linkdaySet(3,1,1,'www.yahoo.co.jp/','Yahoo!‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>©ƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(3,10,2,'www.google.com/','Google‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>•ÊƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(3,25,0,'','ƒŠƒ“ƒN‚Í‚µ‚Ü‚¹‚ñB<br>ƒƒbƒZ[ƒW‚Ì‚İ•\¦‚µ‚Ü‚·B<br>Ê^‚à“ü‚è‚Ü‚·B<br><img src="img/change_ph01.jpg" width="120" height="84" alt="Ê^" vspace="5">');
-linkdaySet(3,29,3,'www.goo.ne.jp/','goo‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>ƒ|ƒbƒvƒAƒbƒv‚ÅˆÚ“®‚µ‚Ü‚·B');
+linkdaySet(3,1,1,'www.yahoo.co.jp/','Yahoo!ã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>è‡ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(3,10,2,'www.google.com/','Googleã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>åˆ¥ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(3,25,0,'','ãƒªãƒ³ã‚¯ã¯ã—ã¾ã›ã‚“ã€‚<br>ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã¿è¡¨ç¤ºã—ã¾ã™ã€‚<br>å†™çœŸã‚‚å…¥ã‚Šã¾ã™ã€‚<br><img src="img/change_ph01.jpg" width="120" height="84" alt="å†™çœŸ" vspace="5">');
+linkdaySet(3,29,3,'www.goo.ne.jp/','gooã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ã§ç§»å‹•ã—ã¾ã™ã€‚');
 
-linkdaySet(4,8,1,'www.yahoo.co.jp/','Yahoo!‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>©ƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(4,15,2,'www.google.com/','Google‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>•ÊƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(4,20,0,'','ƒŠƒ“ƒN‚Í‚µ‚Ü‚¹‚ñB<br>ƒƒbƒZ[ƒW‚Ì‚İ•\¦‚µ‚Ü‚·B<br>Ê^‚à“ü‚è‚Ü‚·B<br><img src="img/change_ph01.jpg" width="120" height="84" alt="Ê^" vspace="5">');
-linkdaySet(4,30,3,'www.goo.ne.jp/','goo‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>ƒ|ƒbƒvƒAƒbƒv‚ÅˆÚ“®‚µ‚Ü‚·B');
+linkdaySet(4,8,1,'www.yahoo.co.jp/','Yahoo!ã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>è‡ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(4,15,2,'www.google.com/','Googleã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>åˆ¥ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(4,20,0,'','ãƒªãƒ³ã‚¯ã¯ã—ã¾ã›ã‚“ã€‚<br>ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã¿è¡¨ç¤ºã—ã¾ã™ã€‚<br>å†™çœŸã‚‚å…¥ã‚Šã¾ã™ã€‚<br><img src="img/change_ph01.jpg" width="120" height="84" alt="å†™çœŸ" vspace="5">');
+linkdaySet(4,30,3,'www.goo.ne.jp/','gooã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ã§ç§»å‹•ã—ã¾ã™ã€‚');
 
-linkdaySet(5,5,1,'www.yahoo.co.jp/','Yahoo!‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>©ƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(5,15,2,'www.google.com/','Google‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>•ÊƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(5,20,0,'','ƒŠƒ“ƒN‚Í‚µ‚Ü‚¹‚ñB<br>ƒƒbƒZ[ƒW‚Ì‚İ•\¦‚µ‚Ü‚·B<br>Ê^‚à“ü‚è‚Ü‚·B<br><img src="img/change_ph01.jpg" width="120" height="84" alt="Ê^" vspace="5">');
-linkdaySet(5,24,3,'www.goo.ne.jp/','goo‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>ƒ|ƒbƒvƒAƒbƒv‚ÅˆÚ“®‚µ‚Ü‚·B');
+linkdaySet(5,5,1,'www.yahoo.co.jp/','Yahoo!ã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>è‡ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(5,15,2,'www.google.com/','Googleã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>åˆ¥ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(5,20,0,'','ãƒªãƒ³ã‚¯ã¯ã—ã¾ã›ã‚“ã€‚<br>ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã¿è¡¨ç¤ºã—ã¾ã™ã€‚<br>å†™çœŸã‚‚å…¥ã‚Šã¾ã™ã€‚<br><img src="img/change_ph01.jpg" width="120" height="84" alt="å†™çœŸ" vspace="5">');
+linkdaySet(5,24,3,'www.goo.ne.jp/','gooã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ã§ç§»å‹•ã—ã¾ã™ã€‚');
 
-linkdaySet(6,1,1,'www.yahoo.co.jp/','Yahoo!‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>©ƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(6,10,2,'www.google.com/','Google‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>•ÊƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(6,25,0,'','ƒŠƒ“ƒN‚Í‚µ‚Ü‚¹‚ñB<br>ƒƒbƒZ[ƒW‚Ì‚İ•\¦‚µ‚Ü‚·B<br>Ê^‚à“ü‚è‚Ü‚·B<br><img src="img/change_ph01.jpg" width="120" height="84" alt="Ê^" vspace="5">');
-linkdaySet(6,29,3,'www.goo.ne.jp/','goo‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>ƒ|ƒbƒvƒAƒbƒv‚ÅˆÚ“®‚µ‚Ü‚·B');
+linkdaySet(6,1,1,'www.yahoo.co.jp/','Yahoo!ã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>è‡ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(6,10,2,'www.google.com/','Googleã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>åˆ¥ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(6,25,0,'','ãƒªãƒ³ã‚¯ã¯ã—ã¾ã›ã‚“ã€‚<br>ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã¿è¡¨ç¤ºã—ã¾ã™ã€‚<br>å†™çœŸã‚‚å…¥ã‚Šã¾ã™ã€‚<br><img src="img/change_ph01.jpg" width="120" height="84" alt="å†™çœŸ" vspace="5">');
+linkdaySet(6,29,3,'www.goo.ne.jp/','gooã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ã§ç§»å‹•ã—ã¾ã™ã€‚');
 
-linkdaySet(7,8,1,'www.yahoo.co.jp/','Yahoo!‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>©ƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(7,15,2,'www.google.com/','Google‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>•ÊƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(7,20,0,'','ƒŠƒ“ƒN‚Í‚µ‚Ü‚¹‚ñB<br>ƒƒbƒZ[ƒW‚Ì‚İ•\¦‚µ‚Ü‚·B<br>Ê^‚à“ü‚è‚Ü‚·B<br><img src="img/change_ph01.jpg" width="120" height="84" alt="Ê^" vspace="5">');
-linkdaySet(7,30,3,'www.goo.ne.jp/','goo‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>ƒ|ƒbƒvƒAƒbƒv‚ÅˆÚ“®‚µ‚Ü‚·B');
+linkdaySet(7,8,1,'www.yahoo.co.jp/','Yahoo!ã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>è‡ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(7,15,2,'www.google.com/','Googleã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>åˆ¥ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(7,20,0,'','ãƒªãƒ³ã‚¯ã¯ã—ã¾ã›ã‚“ã€‚<br>ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã¿è¡¨ç¤ºã—ã¾ã™ã€‚<br>å†™çœŸã‚‚å…¥ã‚Šã¾ã™ã€‚<br><img src="img/change_ph01.jpg" width="120" height="84" alt="å†™çœŸ" vspace="5">');
+linkdaySet(7,30,3,'www.goo.ne.jp/','gooã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ã§ç§»å‹•ã—ã¾ã™ã€‚');
 
-linkdaySet(8,5,1,'www.yahoo.co.jp/','Yahoo!‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>©ƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(8,15,2,'www.google.com/','Google‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>•ÊƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(8,20,0,'','ƒŠƒ“ƒN‚Í‚µ‚Ü‚¹‚ñB<br>ƒƒbƒZ[ƒW‚Ì‚İ•\¦‚µ‚Ü‚·B<br>Ê^‚à“ü‚è‚Ü‚·B<br><img src="img/change_ph01.jpg" width="120" height="84" alt="Ê^" vspace="5">');
-linkdaySet(8,24,3,'www.goo.ne.jp/','goo‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>ƒ|ƒbƒvƒAƒbƒv‚ÅˆÚ“®‚µ‚Ü‚·B');
+linkdaySet(8,5,1,'www.yahoo.co.jp/','Yahoo!ã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>è‡ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(8,15,2,'www.google.com/','Googleã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>åˆ¥ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(8,20,0,'','ãƒªãƒ³ã‚¯ã¯ã—ã¾ã›ã‚“ã€‚<br>ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã¿è¡¨ç¤ºã—ã¾ã™ã€‚<br>å†™çœŸã‚‚å…¥ã‚Šã¾ã™ã€‚<br><img src="img/change_ph01.jpg" width="120" height="84" alt="å†™çœŸ" vspace="5">');
+linkdaySet(8,24,3,'www.goo.ne.jp/','gooã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ã§ç§»å‹•ã—ã¾ã™ã€‚');
 
-linkdaySet(9,1,1,'www.yahoo.co.jp/','Yahoo!‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>©ƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(9,10,2,'www.google.com/','Google‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>•ÊƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(9,25,0,'','ƒŠƒ“ƒN‚Í‚µ‚Ü‚¹‚ñB<br>ƒƒbƒZ[ƒW‚Ì‚İ•\¦‚µ‚Ü‚·B<br>Ê^‚à“ü‚è‚Ü‚·B<br><img src="img/change_ph01.jpg" width="120" height="84" alt="Ê^" vspace="5">');
-linkdaySet(9,29,3,'www.goo.ne.jp/','goo‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>ƒ|ƒbƒvƒAƒbƒv‚ÅˆÚ“®‚µ‚Ü‚·B');
+linkdaySet(9,1,1,'www.yahoo.co.jp/','Yahoo!ã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>è‡ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(9,10,2,'www.google.com/','Googleã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>åˆ¥ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(9,25,0,'','ãƒªãƒ³ã‚¯ã¯ã—ã¾ã›ã‚“ã€‚<br>ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã¿è¡¨ç¤ºã—ã¾ã™ã€‚<br>å†™çœŸã‚‚å…¥ã‚Šã¾ã™ã€‚<br><img src="img/change_ph01.jpg" width="120" height="84" alt="å†™çœŸ" vspace="5">');
+linkdaySet(9,29,3,'www.goo.ne.jp/','gooã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ã§ç§»å‹•ã—ã¾ã™ã€‚');
 
-linkdaySet(10,8,1,'www.yahoo.co.jp/','Yahoo!‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>©ƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(10,15,2,'www.google.com/','Google‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>•ÊƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(10,20,0,'','ƒŠƒ“ƒN‚Í‚µ‚Ü‚¹‚ñB<br>ƒƒbƒZ[ƒW‚Ì‚İ•\¦‚µ‚Ü‚·B<br>Ê^‚à“ü‚è‚Ü‚·B<br><img src="img/change_ph01.jpg" width="120" height="84" alt="Ê^" vspace="5">');
-linkdaySet(10,30,3,'www.goo.ne.jp/','goo‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>ƒ|ƒbƒvƒAƒbƒv‚ÅˆÚ“®‚µ‚Ü‚·B');
+linkdaySet(10,8,1,'localhost/kame/gallery.php','Yahoo!ã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>è‡ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(10,15,2,'www.google.com/','Googleã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>åˆ¥ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(10,20,0,'','ãƒªãƒ³ã‚¯ã¯ã—ã¾ã›ã‚“ã€‚<br>ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã¿è¡¨ç¤ºã—ã¾ã™ã€‚<br>å†™çœŸã‚‚å…¥ã‚Šã¾ã™ã€‚<br><img src="img/change_ph01.jpg" width="120" height="84" alt="å†™çœŸ" vspace="5">');
+linkdaySet(10,30,3,'www.goo.ne.jp/','gooã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ã§ç§»å‹•ã—ã¾ã™ã€‚');
 
-linkdaySet(11,5,1,'www.yahoo.co.jp/','Yahoo!‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>©ƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(11,15,2,'www.google.com/','Google‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>•ÊƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(11,20,0,'','ƒŠƒ“ƒN‚Í‚µ‚Ü‚¹‚ñB<br>ƒƒbƒZ[ƒW‚Ì‚İ•\¦‚µ‚Ü‚·B<br>Ê^‚à“ü‚è‚Ü‚·B<br><img src="img/change_ph01.jpg" width="120" height="84" alt="Ê^" vspace="5">');
-linkdaySet(11,24,3,'www.goo.ne.jp/','goo‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>ƒ|ƒbƒvƒAƒbƒv‚ÅˆÚ“®‚µ‚Ü‚·B');
+linkdaySet(11,5,1,'www.yahoo.co.jp/','Yahoo!ã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>è‡ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(11,15,2,'www.google.com/','Googleã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>åˆ¥ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(11,20,0,'','ãƒªãƒ³ã‚¯ã¯ã—ã¾ã›ã‚“ã€‚<br>ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã¿è¡¨ç¤ºã—ã¾ã™ã€‚<br>å†™çœŸã‚‚å…¥ã‚Šã¾ã™ã€‚<br><img src="img/change_ph01.jpg" width="120" height="84" alt="å†™çœŸ" vspace="5">');
+linkdaySet(11,24,3,'www.goo.ne.jp/','gooã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ã§ç§»å‹•ã—ã¾ã™ã€‚');
 
-linkdaySet(12,1,1,'www.yahoo.co.jp/','Yahoo!‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>©ƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(12,10,2,'www.google.com/','Google‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>•ÊƒEƒBƒ“ƒhƒE‚ÅˆÚ“®‚µ‚Ü‚·B');
-linkdaySet(12,25,0,'','ƒŠƒ“ƒN‚Í‚µ‚Ü‚¹‚ñB<br>ƒƒbƒZ[ƒW‚Ì‚İ•\¦‚µ‚Ü‚·B<br>Ê^‚à“ü‚è‚Ü‚·B<br><img src="img/change_ph01.jpg" width="120" height="84" alt="Ê^" vspace="5">');
-linkdaySet(12,29,3,'www.goo.ne.jp/','goo‚Ö‚ÌƒŠƒ“ƒN‚Å‚·B<br>ƒ|ƒbƒvƒAƒbƒv‚ÅˆÚ“®‚µ‚Ü‚·B');
+linkdaySet(12,1,1,'www.yahoo.co.jp/','Yahoo!ã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>è‡ªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(12,10,2,'www.google.com/','Googleã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>åˆ¥ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§ç§»å‹•ã—ã¾ã™ã€‚');
+linkdaySet(12,25,0,'','ãƒªãƒ³ã‚¯ã¯ã—ã¾ã›ã‚“ã€‚<br>ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ã¿è¡¨ç¤ºã—ã¾ã™ã€‚<br>å†™çœŸã‚‚å…¥ã‚Šã¾ã™ã€‚<br><img src="img/change_ph01.jpg" width="120" height="84" alt="å†™çœŸ" vspace="5">');
+linkdaySet(12,29,3,'www.goo.ne.jp/','gooã¸ã®ãƒªãƒ³ã‚¯ã§ã™ã€‚<br>ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ã§ç§»å‹•ã—ã¾ã™ã€‚');
 
 
-//ƒ|ƒbƒvƒAƒbƒvƒEƒBƒ“ƒhƒE‚Ì•‚Æ‚‚³‚ğw’è
-winWW = 400;	//•
-winHH = 400;	//‚‚³
-winSCL = "no";	//ƒXƒNƒ[ƒ‹ [yes, no]
+//ãƒãƒƒãƒ—ã‚¢ãƒƒãƒ—ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®å¹…ã¨é«˜ã•ã‚’æŒ‡å®š
+winWW = 400;	//å¹…
+winHH = 400;	//é«˜ã•
+winSCL = "no";	//ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ« [yes, no]
 
-//Œ»İ‚ÌŒ‚©‚ç‰½ƒ–Œ‘O‚Ü‚Å•\¦
+//ç¾åœ¨ã®æœˆã‹ã‚‰ä½•ãƒ¶æœˆå‰ã¾ã§è¡¨ç¤º
 bfMonNm = 6;
 
-//Œ»İ‚ÌŒ‚©‚ç‰½ƒ–ŒŒã‚Ü‚Å•\¦
+//ç¾åœ¨ã®æœˆã‹ã‚‰ä½•ãƒ¶æœˆå¾Œã¾ã§è¡¨ç¤º
 afMonNm = 6;
 
-/* ---------- İ’è—Ìˆæ end ---------- */
+/* ---------- è¨­å®šé ˜åŸŸ end ---------- */
 
 
 
 
 function dateReset(){
-	//Œ»İ‚Ì“ú•t‚ğæ“¾
+	//ç¾åœ¨ã®æ—¥ä»˜ã‚’å–å¾—
 	nowDate = new Date();
 	theYear = nowDate.getFullYear();
 	theMonth = nowDate.getMonth();
 	theDate = nowDate.getDate();
 	theDay = nowDate.getDay();
 
-	//Œ»İ‚Ì“ú•t‚ğ•Û
+	//ç¾åœ¨ã®æ—¥ä»˜ã‚’ä¿æŒ
 	nowMonth = theMonth;
 	nowYear = theYear;
 }
@@ -171,11 +170,11 @@ function dateReset(){
 dateReset();
 
 
-//ƒŠƒ“ƒN‚Ì”‚ğæ“¾
+//ãƒªãƒ³ã‚¯ã®æ•°ã‚’å–å¾—
 linkNum = i;
 
 
-//ƒJƒŒƒ“ƒ_[•\¦ ÅŒã‚Ü‚Å
+//ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼è¡¨ç¤º æœ€å¾Œã¾ã§
 function createCalen(MM){
 
 	i = 0;
@@ -197,72 +196,72 @@ function createCalen(MM){
 	}
 	
 	
-	//Œ‚Ì“ú”æ“¾
+	//æœˆã®æ—¥æ•°å–å¾—
 	monNum = new Date(theYear, theMonth + 1, 0).getDate();
 	
-	//1“ú‚Ì—j“ú‚ğæ“¾
+	//1æ—¥ã®æ›œæ—¥ã‚’å–å¾—
 	firstDay = new Date(theYear, theMonth, 1).getDay();
 	
-	//Œ‚ÌT‚ğæ“¾
+	//æœˆã®é€±ã‚’å–å¾—
 	theWeek = Math.ceil((monNum + firstDay) / 7);
 	
 	
-	//j“ú‚ğİ’è
-	holidaySet(1,1,0,0,'Œ³’U');
-	holidaySet(1,0,2,1,'¬l‚Ì“ú');
-	holidaySet(2,11,0,0,'Œš‘‹L”O‚Ì“ú');
+	//ç¥æ—¥ã‚’è¨­å®š
+	holidaySet(1,1,0,0,'å…ƒæ—¦');
+	holidaySet(1,0,2,1,'æˆäººã®æ—¥');
+	holidaySet(2,11,0,0,'å»ºå›½è¨˜å¿µã®æ—¥');
 	
 	if(theYear%4 == 0 || theYear%4 == 1){
-		holidaySet(3,20,0,0,'t•ª‚Ì“ú');
+		holidaySet(3,20,0,0,'æ˜¥åˆ†ã®æ—¥');
 	}else{
-		holidaySet(3,21,0,0,'t•ª‚Ì“ú');
+		holidaySet(3,21,0,0,'æ˜¥åˆ†ã®æ—¥');
 	}
 	
-	holidaySet(4,29,0,0,'º˜a‚Ì“ú');
-	holidaySet(5,3,0,0,'Œ›–@‹L”O“ú');
-	holidaySet(5,4,0,0,'‚İ‚Ç‚è‚Ì“ú');
-	holidaySet(5,5,0,0,'‚±‚Ç‚à‚Ì“ú');
-	holidaySet(7,0,3,1,'ŠC‚Ì“ú');
-	holidaySet(9,0,3,1,'Œh˜V‚Ì“ú');
+	holidaySet(4,29,0,0,'æ˜­å’Œã®æ—¥');
+	holidaySet(5,3,0,0,'æ†²æ³•è¨˜å¿µæ—¥');
+	holidaySet(5,4,0,0,'ã¿ã©ã‚Šã®æ—¥');
+	holidaySet(5,5,0,0,'ã“ã©ã‚‚ã®æ—¥');
+	holidaySet(7,0,3,1,'æµ·ã®æ—¥');
+	holidaySet(9,0,3,1,'æ•¬è€ã®æ—¥');
 	
 	if(theYear >= 2012 && theYear <= 2044 && theYear%4 == 0){
-		holidaySet(9,22,0,0,'H•ª‚Ì“ú');
+		holidaySet(9,22,0,0,'ç§‹åˆ†ã®æ—¥');
 	}else{
-		holidaySet(9,23,0,0,'H•ª‚Ì“ú');
+		holidaySet(9,23,0,0,'ç§‹åˆ†ã®æ—¥');
 	}
 	
-	holidaySet(10,0,2,1,'‘Ìˆç‚Ì“ú');
-	holidaySet(11,3,0,0,'•¶‰»‚Ì“ú');
-	holidaySet(11,23,0,0,'‹Î˜JŠ´Ó‚Ì“ú');
-	holidaySet(12,23,0,0,'“Vc’a¶“ú');
+	holidaySet(10,0,2,1,'ä½“è‚²ã®æ—¥');
+	holidaySet(11,3,0,0,'æ–‡åŒ–ã®æ—¥');
+	holidaySet(11,23,0,0,'å‹¤åŠ´æ„Ÿè¬ã®æ—¥');
+	holidaySet(12,23,0,0,'å¤©çš‡èª•ç”Ÿæ—¥');
 	
-	//j“ú‚Ì”‚ğæ“¾
+	//ç¥æ—¥ã®æ•°ã‚’å–å¾—
 	holiNum = i;
 	
 
 	diffY = (theYear - nowYear) * 12;
 	diffM = theMonth - nowMonth;
 
-	//Œ‘OŒãƒ{ƒ^ƒ“‚Ì•\¦”ñ•\¦
+	//æœˆå‰å¾Œãƒœã‚¿ãƒ³ã®è¡¨ç¤ºéè¡¨ç¤º
 	if(afMonNm > diffY + diffM){
-		rtBtn = '<a href="javascript:showCalen(theMonth + 1); void(0);">„</a>';
+		rtBtn = '<a href="javascript:showCalen(theMonth + 1); void(0);">ï¼</a>';
 	}else{
 		rtBtn = '&nbsp;';
 	}
 
 	if(bfMonNm > - diffY - diffM){
-		ltBtn = '<a href="javascript:showCalen(theMonth - 1); void(0);">ƒ</a>';
+		ltBtn = '<a href="javascript:showCalen(theMonth - 1); void(0);">ï¼œ</a>';
 	}else{
 		ltBtn = '&nbsp;';
 	}
 
 	
-	//ƒJƒŒƒ“ƒ_[•\¦
+	//ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼è¡¨ç¤º
 	calenData = '';
 	calenData += '<table class="calTable">';
 	calenData += '<tr>';
 	calenData += '<td class="btn">' + ltBtn + '</td>';
-	calenData += '<td colspan="5" class="mon"><span class="yView">' + theYear + '”N</span>&nbsp;' + (theMonth + 1) + 'Œ&nbsp;</td>';
+	calenData += '<td colspan="5" class="mon"><span class="yView">' + theYear + 'å¹´</span>&nbsp;' + (theMonth + 1) + 'æœˆ&nbsp;</td>';
 	calenData += '<td class="btn">' + rtBtn + '</td>';
 	calenData += '</tr>';
 	calenData += '<tr>';
@@ -276,7 +275,7 @@ function createCalen(MM){
 	calenData += '</tr>';
 	
 	
-	//d‚È‚è‡—p
+	//é‡ãªã‚Šé †ç”¨
 	zNum = 32;
 	
 	dateNum = 0;
@@ -355,18 +354,18 @@ function createCalen(MM){
 	
 			}else if(nationHoli == "on"){
 				if(dateNum == theDate && theMonth == nowDate.getMonth() && theYear == nowDate.getFullYear()){
-					calenData += ' class="sun today" title="‘–¯‚Ì‹x“ú"';
+					calenData += ' class="sun today" title="å›½æ°‘ã®ä¼‘æ—¥"';
 				}else{
-					calenData += ' class="sun" title="‘–¯‚Ì‹x“ú"';
+					calenData += ' class="sun" title="å›½æ°‘ã®ä¼‘æ—¥"';
 				}
 	
 				nationHoli = "off";
 		
 			}else if(subHoli == "on"){
 				if(dateNum == theDate && theMonth == nowDate.getMonth() && theYear == nowDate.getFullYear()){
-					calenData += ' class="sun today" title="U‘Ö‹x“ú"';
+					calenData += ' class="sun today" title="æŒ¯æ›¿ä¼‘æ—¥"';
 				}else{
-					calenData += ' class="sun" title="U‘Ö‹x“ú"';
+					calenData += ' class="sun" title="æŒ¯æ›¿ä¼‘æ—¥"';
 				}
 	
 				subHoli = "off";
@@ -429,12 +428,12 @@ function createCalen(MM){
 	}
 	
 	calenData += '<tr>';
-	calenData += '<td colspan="7" class="webJozu"><a href="http://www.web-jozu.com/" target="_blank" title="WEBãè - JavaScriptEPHPEFlash‚ÌƒTƒ“ƒvƒ‹‚â‘fŞW">&copy;WEBãè</a></td>';
+	calenData += '<td colspan="7" class="webJozu"><a href="http://www.web-jozu.com/" target="_blank" title="WEBä¸Šæ‰‹ - JavaScriptãƒ»PHPãƒ»Flashã®ã‚µãƒ³ãƒ—ãƒ«ã‚„ç´ æé›†">&copy;WEBä¸Šæ‰‹</a></td>';
 	calenData += '</tr>';
 	calenData += '</table>';
 
 	return calenData;
 }
-//Å‰‚©‚ç
+//æœ€åˆã‹ã‚‰
 
 showCalen(nowMonth);

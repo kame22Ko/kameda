@@ -11,6 +11,8 @@ $h = 0;
 $h1 = 0;
 $h2 = 0;
 
+// $bbb = 0;
+$bbb = $_POST['bbb'];
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
   //初めにログインしたら今日の写真を表示する
@@ -115,7 +117,11 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
         <div class="section-title">
           <h2>Our Team</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>
+            <?php 
+              echo $bbb;
+            ?>
+          </p>
         </div>
 
         <div class="row gy-4">
