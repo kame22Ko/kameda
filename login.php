@@ -17,7 +17,7 @@ if (password_verify($_POST['password'], $member['password'])) {
     //DBのユーザー情報をセッションに保存
     $_SESSION['id'] = $member['id'];
     $_SESSION['name'] = $member['name'];
-    echo'ログインしました。';
+    // echo'ログインしました。';
     $link = '<a href="mein.php">ホーム</a>';
     header('refresh:1;http://localhost/kame/mypage_prot.html');
     exit();

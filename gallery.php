@@ -11,7 +11,7 @@ $h = 0;
 $h1 = 0;
 $h2 = 0;
 
-// $bbb = 0;
+// 
 $bbb = $_POST['bbb'];
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
@@ -30,9 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     $stmt->bindValue(':bbb', $bbb, PDO::PARAM_STR);
     $stmt->execute();
     $images = $stmt->fetchAll();
-    //日付をがpostされたらその日の画像の取得
-    // header('Location: gallery.php');
-    // exit();
+    
 }
 // header('Location:picture.html');
 ?>

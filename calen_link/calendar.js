@@ -20,6 +20,8 @@ function linkdaySet(MM,DD,ACT,URL,TTL){
 	this['link' + MM + 'MM']['d' + DD]['act'] = ACT;
 	this['link' + MM + 'MM']['d' + DD]['url'] = URL;
 	this['link' + MM + 'MM']['d' + DD]['ttl'] = TTL;
+
+	// niti();
 }
 
 function showCalen(MM){
@@ -69,7 +71,15 @@ for(i=1; i<=12; i++){
 i = 0;
 
 
-
+//日付をクリックしたら日付の値をpostしてgallery.phpで値をgetしてその日の食事を表示（したい）
+function niti(){
+	var form = document.createElement("form");
+	form.method = "POST";
+	document.body.append(form);
+	form.name = "name";
+	
+	form.submit();
+}
 
 
 /* ---------- 設定領域 start ---------- */
@@ -77,7 +87,7 @@ i = 0;
 //リンクを設定
 //linkdaySet(月,日,ウィンドウ [0:リンクなし, 1:自win, 2:別win, 3:PopUpWin],リンク先,説明)
 
-linkdaySet(1,1,1,'localhost/kame/gallery.html#about','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
+linkdaySet(1,1,1,'localhost/kame/gallery.html','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
 linkdaySet(1,10,2,'www.google.com/','Googleへのリンクです。<br>別ウィンドウで移動します。');
 linkdaySet(1,25,0,'','リンクはしません。<br>メッセージのみ表示します。<br>写真も入ります。<br><img src="img/change_ph01.jpg" width="120" height="84" alt="写真" vspace="5">');
 linkdaySet(1,29,3,'www.goo.ne.jp/','gooへのリンクです。<br>ポップアップで移動します。');
@@ -127,7 +137,7 @@ linkdaySet(10,15,2,'www.google.com/','Googleへのリンクです。<br>別ウ�
 linkdaySet(10,20,0,'','リンクはしません。<br>メッセージのみ表示します。<br>写真も入ります。<br><img src="img/change_ph01.jpg" width="120" height="84" alt="写真" vspace="5">');
 linkdaySet(10,30,3,'www.goo.ne.jp/','gooへのリンクです。<br>ポップアップで移動します。');
 
-linkdaySet(11,5,1,'www.yahoo.co.jp/','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
+linkdaySet(11,5,1,'localhost/kame/gallery.php','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
 linkdaySet(11,15,2,'www.google.com/','Googleへのリンクです。<br>別ウィンドウで移動します。');
 linkdaySet(11,20,0,'','リンクはしません。<br>メッセージのみ表示します。<br>写真も入ります。<br><img src="img/change_ph01.jpg" width="120" height="84" alt="写真" vspace="5">');
 linkdaySet(11,24,3,'www.goo.ne.jp/','gooへのリンクです。<br>ポップアップで移動します。');
@@ -136,6 +146,7 @@ linkdaySet(12,1,1,'www.yahoo.co.jp/','Yahoo!へのリンクです。<br>自ウ�
 linkdaySet(12,10,2,'www.google.com/','Googleへのリンクです。<br>別ウィンドウで移動します。');
 linkdaySet(12,25,0,'','リンクはしません。<br>メッセージのみ表示します。<br>写真も入ります。<br><img src="img/change_ph01.jpg" width="120" height="84" alt="写真" vspace="5">');
 linkdaySet(12,29,3,'www.goo.ne.jp/','gooへのリンクです。<br>ポップアップで移動します。');
+
 
 
 //ポップアップウィンドウの幅と高さを指定
