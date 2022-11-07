@@ -50,10 +50,35 @@ function linkGo(MM,DD){
 	if(actObj == 0 || urlObj == ""){
 
 	}else if(actObj == 1){
-		location.href = 'http://' + urlObj;
+		var form = document.createElement("form"); //formを作成
+		form.action = 'http://'+ urlObj;
+		form.method = "POST";
 
-		newWin1 = window.open('http://' + urlObj, null);
-		newWin1.focus();
+		// POSTパラメーターようにinputタグを生成
+		var reqElm = document.createElement('input');
+		// nameとvalueにそれぞれPOSTしたいパラメーターを追加
+		reqElm.type = 'hidden';
+		reqElm.name = "bbb";
+		reqElm.value = "2022-11-04";//クリックした日付の値にできるようにする（下のも同じ値になるように）
+
+		var reqElm2 = document.createElement('input');
+
+		reqElm2.type = 'hidden';
+		reqElm2.name = "aaa";
+		reqElm2.value = "2022-11-04";//クリックした日付の値にできるようにする
+
+		// フォームタグにinputタグを追加（formの中にinputを入れる）
+		form.appendChild(reqElm);
+		form.appendChild(reqElm2);
+
+		// bodyにフォームタグを追加（htmlのbodyの中にformを入れる）
+		document.body.appendChild(form);
+
+		form.submit();
+
+		//location.href = 'http://' + urlObj;
+		// newWin1 = window.open('http://' + urlObj, null);
+		// newWin1.focus();
 
 	}else if(actObj == 3){
 		newWin2 = window.open('http://' + urlObj, 'newWin', 'width=' + winWW + ', height=' + winHH + ', menubar=yes, toolbar=yes, scrollbars=' + winSCL + '');
@@ -75,9 +100,24 @@ i = 0;
 function niti(){
 	var form = document.createElement("form");
 	form.method = "POST";
-	document.body.append(form);
-	form.name = "name";
+	// document.body.append(form);
+	// form.name = "name";
 	
+
+	// POSTパラメーターようにinputタグを生成
+	var reqElm = document.createElement('input');
+
+	// nameとvalueにそれぞれPOSTしたいパラメーターを追加
+	reqElm.type = 'hidden';
+	reqElm.name = 'name';
+	reqElm.value = 1;
+
+	// フォームタグにinputタグを追加
+	form.appendChild(reqElm);
+
+	// bodyにフォームタグを追加
+	document.body.appendChild(form);
+
 	form.submit();
 }
 
@@ -132,15 +172,42 @@ linkdaySet(9,10,2,'www.google.com/','Googleへのリンクです。<br>別ウィ
 linkdaySet(9,25,0,'','リンクはしません。<br>メッセージのみ表示します。<br>写真も入ります。<br><img src="img/change_ph01.jpg" width="120" height="84" alt="写真" vspace="5">');
 linkdaySet(9,29,3,'www.goo.ne.jp/','gooへのリンクです。<br>ポップアップで移動します。');
 
-linkdaySet(10,8,1,'localhost/kame/gallery.php','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
+linkdaySet(10,8,1,'localhost/student/kame/gallery.php','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
 linkdaySet(10,15,2,'www.google.com/','Googleへのリンクです。<br>別ウィンドウで移動します。');
 linkdaySet(10,20,0,'','リンクはしません。<br>メッセージのみ表示します。<br>写真も入ります。<br><img src="img/change_ph01.jpg" width="120" height="84" alt="写真" vspace="5">');
 linkdaySet(10,30,3,'www.goo.ne.jp/','gooへのリンクです。<br>ポップアップで移動します。');
 
-linkdaySet(11,5,1,'localhost/kame/gallery.php','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
-linkdaySet(11,15,2,'www.google.com/','Googleへのリンクです。<br>別ウィンドウで移動します。');
-linkdaySet(11,20,0,'','リンクはしません。<br>メッセージのみ表示します。<br>写真も入ります。<br><img src="img/change_ph01.jpg" width="120" height="84" alt="写真" vspace="5">');
-linkdaySet(11,24,3,'www.goo.ne.jp/','gooへのリンクです。<br>ポップアップで移動します。');
+//11月のリンク(左側が月の値で、真ん中が日付、右側がこのリンクに飛ばす役割をしている)
+linkdaySet(11,1,1,'localhost/kame/gallery.php','');
+linkdaySet(11,2,1,'localhost/kame/gallery.php','');
+linkdaySet(11,3,1,'localhost/kame/gallery.php','');
+linkdaySet(11,4,1,'localhost/kame/gallery.php','');
+linkdaySet(11,5,1,'localhost/kame/gallery.php','');
+linkdaySet(11,6,1,'localhost/kame/gallery.php','');
+linkdaySet(11,7,1,'localhost/kame/gallery.php','');
+linkdaySet(11,8,1,'localhost/kame/gallery.php','');
+linkdaySet(11,9,1,'localhost/kame/gallery.php','');
+linkdaySet(11,10,1,'localhost/kame/gallery.php','');
+linkdaySet(11,11,1,'localhost/kame/gallery.php','');
+linkdaySet(11,12,1,'localhost/kame/gallery.php','');
+linkdaySet(11,13,1,'localhost/kame/gallery.php','');
+linkdaySet(11,14,1,'localhost/kame/gallery.php','');
+linkdaySet(11,15,1,'localhost/kame/gallery.php','');
+linkdaySet(11,16,1,'localhost/kame/gallery.php','');
+linkdaySet(11,17,1,'localhost/kame/gallery.php','');
+linkdaySet(11,18,1,'localhost/kame/gallery.php','');
+linkdaySet(11,19,1,'localhost/kame/gallery.php','');
+linkdaySet(11,20,1,'localhost/kame/gallery.php','');
+linkdaySet(11,21,1,'localhost/kame/gallery.php','');
+linkdaySet(11,22,1,'localhost/kame/gallery.php','');
+linkdaySet(11,23,1,'localhost/kame/gallery.php','');
+linkdaySet(11,24,1,'localhost/kame/gallery.php','');
+linkdaySet(11,25,1,'localhost/kame/gallery.php','');
+linkdaySet(11,26,1,'localhost/kame/gallery.php','');
+linkdaySet(11,27,1,'localhost/kame/gallery.php','');
+linkdaySet(11,28,1,'localhost/kame/gallery.php','');
+linkdaySet(11,29,1,'localhost/kame/gallery.php','');
+linkdaySet(11,30,1,'localhost/kame/gallery.php','');
 
 linkdaySet(12,1,1,'www.yahoo.co.jp/','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
 linkdaySet(12,10,2,'www.google.com/','Googleへのリンクです。<br>別ウィンドウで移動します。');

@@ -11,27 +11,59 @@ $h = 0;
 $h1 = 0;
 $h2 = 0;
 
-// 
+
+$aaa = $_POST['aaa'];
 $bbb = $_POST['bbb'];
+$aaa1 = new DateTime($aaa);
+$bbb1 = new DateTime($bbb);
+$aaa2 = $aaa1->format("Y-m-d");
+$bbb2 = $bbb1->format("Y-m-d");
+
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-  //初めにログインしたら今日の写真を表示する
+    //初めにログインしたら今日の写真を表示する
     $sql = 'SELECT * FROM images WHERE watch = :time2 AND (food = "1" OR food = "2" OR food = "3")';
     $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(':time2', $time2, PDO::PARAM_STR);
+    $stmt->bindValue(':time2', $time, PDO::PARAM_STR);
     $stmt->execute();
     $images = $stmt->fetchAll();
 
     
 } else {
-    $bbb = $_POST['bbb'];
-    $sql = 'SELECT * FROM images WHERE watch = :bbb AND (food = "1" OR food = "2" OR food = "3")';
+    // $sql = 'SELECT * FROM images WHERE watch = :bbb AND (food = "1" OR food = "2" OR food = "3")';
+    $sql = 'SELECT * FROM images WHERE watch BETWEEN :aaa AND :bbb AND (food = "1" OR food = "2" OR food = "3")';
     $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(':bbb', $bbb, PDO::PARAM_STR);
+    $stmt->bindValue(':bbb', $bbb2, PDO::PARAM_STR);
+    $stmt->bindValue(':aaa', $aaa2, PDO::PARAM_STR);
     $stmt->execute();
     $images = $stmt->fetchAll();
-    
-}
+
+
+
+//   //oo日～oo日までを回すfor文
+//   for($q=date("Ymd", strtotime($aaa)); $q<=date("Ymd", strtotime($bbb)); $q++)
+//   {
+//       //2019-05-29（例）の0文字目から４文字までを取得
+//      $year = substr($q, 0,4);
+
+//      //2019-05-29（例）の４文字目から２文字文を取得
+//      $month = substr($q, 4,2);
+
+//      //2019-05-29（例）の６文字目から２文字分を取得
+//      $day = substr($q, 6,2);
+
+//       //実在する日数のみを$daysに入れている
+//      if(checkdate ( $month , $day , $year ))
+//         $ccc = date("Y-m-d", strtotime($q));
+//         // $ccc2 = $ccc->format("Y-m-d");
+//         $sql = 'SELECT * FROM images WHERE watch = :ccc AND (food = "1" OR food = "2" OR food = "3")';
+//         $stmt = $pdo->prepare($sql);
+//         $stmt->bindValue(':ccc', $ccc, PDO::PARAM_STR);
+//         $stmt->execute();
+//         $images = $stmt->fetchAll();
+
+//   } 
+ }
 // header('Location:picture.html');
 ?>
 <!DOCTYPE html>
@@ -117,6 +149,8 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
           <h2>Our Team</h2>
           <p>
             <?php 
+              echo $aaa;
+              echo '<br>';
               echo $bbb;
             ?>
           </p>
@@ -146,10 +180,6 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                     <img src="assets/img/portfolio/noPhoto.png" class="img-fluid" alt="">
                   <?php endif; ?>
               
-              <form  method="post" enctype="multipart/form-data">
-                <button type="submit" class="btn btn-primary">決定</button>
-                <input type="date" name="bbb" min="2022-01-01">
-              </form>
             </div>
           </div>
 
