@@ -91,8 +91,8 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="index.html">ホーム画面</a></li>
-          <li><a href="picture.php">写真アップロード</a></li>
-          <li><a href="testcalendar.html">カレンダー管理</a></li>
+          <li><a href="picture.html">写真アップロード</a></li>
+          <li><a href="calendar.html">カレンダー管理</a></li>
           <li><a class="nav-link scrollto" href="form.html">お問い合わせ</a></li>
           <li><a href="login.html">ログイン</a></li>
         </ul>
@@ -127,98 +127,99 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
             ?>
           </p>
         </div>
-
         <div class="row gy-4">
-          <div class="col-lg-4 col-md-6">
-            <div class="member">
+            <div class="col-lg-4 col-md-6">
+                <div class="member">
               <!-- <img src="$image" alt=""> -->
-              <?php for($i = 0; $i < count($images); $i++): ?>
+                    <?php for($i = 0; $i < count($images); $i++): ?>
+                   
+                        
                     <!-- 写真全部を取得 -->
                     <!-- 一回だけ回して写真を表示できるようにする！ -->
                     <!-- 写真を全部回して３で割ることでその余りを使って朝、昼、夜に分けて -->
                     <!--  -->
-                    <?php if($images[$i]['food'] == "1") :?> 
-                      <!-- $imagesに今日の日付＆foodが１，２，３の写真のデータが配列に入っている -->
-                      <!-- 今日の日付の写真がある場合に表示 -->
-                      <li class="media mt-5">
-                          <a href="#lightbox" data-toggle="modal" data-slide-to="<?= $i; ?>">
-                              <img src="k_image.php?id=<?= $images[$i]['id']; ?>" width="400" height="280" class="mr-3">
-                          </a>
-                          <div class="media-body">
-                            <h5><?= $images[$i]['watch']; ?> </h5>
-                            <h5>朝食</h5>
-                          </div>
-                          <?php $h += 1 ?>
-                    </li>
+
+                    <!-- 朝 -->
+                        <!-- <div class="col-lg-4 col-md-6">
+                            <div class="member"> -->
+                                <?php if($images[$i]['food'] == "1" && $i % 3 == 0) :?> 
+                                  <!-- $imagesに今日の日付＆foodが１，２，３の写真のデータが配列に入っている -->
+                                  <!-- 今日の日付の写真がある場合に表示 -->
+                                  <li class="media mt-5">
+                                      <a href="#lightbox" data-toggle="modal" data-slide-to="<?= $i; ?>">
+                                          <img src="k_image.php?id=<?= $images[$i]['id']; ?>" width="400" height="280" class="mr-3">
+                                      </a>
+                                      <div class="media-body">
+                                        <h5><?= $images[$i]['watch']; ?> </h5>
+                                        <h5>朝食</h5>
+                                      </div>
+                                      <?php $h += 1 ?>
+                                </li>
+                            <!-- </div>
+                        </div> -->
+                        <!-- 昼 -->
+                        <!-- <div class="col-lg-4 col-md-6">
+                            <div class="member"> -->
+                                <?php elseif($images[$i]['food'] == "2" && $i % 3 == 1) :?>
+                                  <!-- $imagesに今日の日付＆foodが１，２，３の写真のデータが配列に入っている -->
+                                  <!-- 今日の日付の写真がある場合に表示 -->
+                                  <li class="media mt-5">
+                                      <a href="#lightbox" data-toggle="modal" data-slide-to="<?= $i; ?>">
+                                          <img src="k_image.php?id=<?= $images[$i]['id']; ?>" width="400" height="280" class="mr-3">
+                                      </a>
+                                      <div class="media-body">
+                                        <h5><?= $images[$i]['watch']; ?> </h5>
+                                        <h5>昼食</h5>
+                                      </div>
+                                      <?php $h1 += 1 ?>
+                                </li>
+                            <!-- </div>
+                        </div> -->
+                        <!-- 夜 -->
+                        <!-- <div class="col-lg-4 col-md-6">
+                            <div class="member"> -->
+                                <?php elseif($images[$i]['food'] == "3" && $i % 3 == 2) :?>
+                                  <!-- $imagesに今日の日付＆foodが１，２，３の写真のデータが配列に入っている -->
+                                  <!-- 今日の日付の写真がある場合に表示 -->
+                                  <li class="media mt-5">
+                                      <a href="#lightbox" data-toggle="modal" data-slide-to="<?= $i; ?>">
+                                          <img src="k_image.php?id=<?= $images[$i]['id']; ?>" width="400" height="280" class="mr-3">
+                                      </a>
+                                      <div class="media-body">
+                                        <h5><?= $images[$i]['watch']; ?> </h5>
+                                        <h5>夜食</h5>
+                                      </div>
+                                      <?php $h2 += 1 ?>
+                                    </li>
+                            <!-- </div>
+                        </div> -->
+                        <?php else :?>
+                            <img src="assets/img/portfolio/noPhoto.png" class="img-fluid" alt="">
+                            
+                        
+                        <?php endif; ?>
+                    
+                    <?php endfor; ?>
+                    <?php if($h == 0) :?>
+                        <img src="assets/img/portfolio/noPhoto.png" class="img-fluid" alt="">
                     <?php endif; ?>
-                  <?php endfor; ?>
-                  <?php if($h == 0) :?>
-                    <img src="assets/img/portfolio/noPhoto.png" class="img-fluid" alt="">
-                  <?php endif; ?>
+                    </div>
+                    </div>
             </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="member">
-            <?php for($i = 0; $i < count($images); $i++): ?>
-                    <!-- 写真全部を取得 -->
-                    <?php if($images[$i]['food'] == "2") :?>
-                      <!-- $imagesに今日の日付＆foodが１，２，３の写真のデータが配列に入っている -->
-                      <!-- 今日の日付の写真がある場合に表示 -->
-                      <li class="media mt-5">
-                          <a href="#lightbox" data-toggle="modal" data-slide-to="<?= $i; ?>">
-                              <img src="k_image.php?id=<?= $images[$i]['id']; ?>" width="400" height="280" class="mr-3">
-                          </a>
-                          <div class="media-body">
-                            <h5><?= $images[$i]['watch']; ?> </h5>
-                            <h5>昼食</h5>
-                          </div>
-                          <?php $h1 += 1 ?>
-                    </li>
-                    <?php endif; ?>
-                  <?php endfor; ?>
-                  <?php if($h1 == 0) :?>
-                    <img src="assets/img/portfolio/noPhoto.png" class="img-fluid" alt="">
-                  <?php endif; ?>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="member">
-              <?php for($i = 0; $i < count($images); $i++): ?>
-                <!-- 写真全部を取得 -->
-                <?php if($images[$i]['food'] == "3") :?>
-                  <!-- $imagesに今日の日付＆foodが１，２，３の写真のデータが配列に入っている -->
-                  <!-- 今日の日付の写真がある場合に表示 -->
-                  <li class="media mt-5">
-                      <a href="#lightbox" data-toggle="modal" data-slide-to="<?= $i; ?>">
-                          <img src="k_image.php?id=<?= $images[$i]['id']; ?>" width="400" height="280" class="mr-3">
-                      </a>
-                      <div class="media-body">
-                        <h5><?= $images[$i]['watch']; ?> </h5>
-                        <h5>夜食</h5>
-                      </div>
-                      <?php $h2 += 1 ?>
-                    </li>
-                <?php endif; ?>
-              <?php endfor; ?>
-
-              <?php if($h2 == 0) :?>
-                <img src="assets/img/portfolio/noPhoto.png" class="img-fluid" alt="">
-              <?php endif; ?>
-            </div>
-          </div>
-          <div>
-            <form  method="post" enctype="multipart/form-data" action="gallery.php">
+        </div>
+        <div>
+            <form  method="post" enctype="multipart/form-data" action="gallery2.php">
             <button type="submit" class="btn btn-primary">決定</button>
             <input type="date" name="aaa" min="2022-01-01">
                 
             <input type="date" name="bbb" min="2022-01-01">
             </form>
-          </div>
+        </div>
+        <div>
+        <!-- <h5><?= $images[$i]['watch']; ?> </h5> -->
 
-            </div>
-        
+        </div>
+
 
       </div>
     </section><!-- End Our Team Section -->

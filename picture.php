@@ -29,20 +29,30 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         $food = $_POST['food'];
         $watch = "";
         $watch = $_POST['watch'];
-        
-        $sql = 'INSERT INTO images(image_name, image_type, image_content, image_size, food, watch, created_at)
-                VALUES (:image_name, :image_type, :image_content, :image_size, :food, :watch ,now())';
 
-        
+        //同じ値の写真が存在するかの確認
+        $sql = 'SELECT * FROM images WHERE watch = :watch1 AND (food = :food1 )';
         $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(':image_name', $name, PDO::PARAM_STR);
-        $stmt->bindValue(':image_type', $type, PDO::PARAM_STR);
-        $stmt->bindValue(':image_content', $content, PDO::PARAM_STR);
-        $stmt->bindValue(':image_size', $size, PDO::PARAM_INT);
-        $stmt->bindValue(':food', $food, PDO::PARAM_STR);
-        $stmt->bindValue(':watch', $watch, PDO::PARAM_STR);
+        $stmt->bindValue(':food1', $food, PDO::PARAM_STR);
+        $stmt->bindValue(':watch1', $watch, PDO::PARAM_STR);
         $stmt->execute();
-        
+        $images = $stmt->fetchAll();
+
+        //写真がすでに入っている場合にはじく
+        if($images == null){
+          $sql = 'INSERT INTO images(image_name, image_type, image_content, image_size, food, watch, created_at)
+                VALUES (:image_name, :image_type, :image_content, :image_size, :food, :watch ,now())'; 
+          $stmt = $pdo->prepare($sql);
+          $stmt->bindValue(':image_name', $name, PDO::PARAM_STR);
+          $stmt->bindValue(':image_type', $type, PDO::PARAM_STR);
+          $stmt->bindValue(':image_content', $content, PDO::PARAM_STR);
+          $stmt->bindValue(':image_size', $size, PDO::PARAM_INT);
+          $stmt->bindValue(':food', $food, PDO::PARAM_STR);
+          $stmt->bindValue(':watch', $watch, PDO::PARAM_STR);
+          $stmt->execute();         
+        }else {
+          echo '画像がすでに入っています';
+        }
     }
     header('Location: picture.php');
     exit();
@@ -98,8 +108,6 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="index.html">ホーム画面</a></li>
-          <li><a class="nav-link scrollto" href="#about">紹介</a></li>
-          <li><a class="nav-link scrollto" href="#services">サービス</a></li>
           <li><a class="nav-link scrollto" href="form.html">お問い合わせ</a></li>
           <li><a href="login.html">ログイン</a></li>
         </ul>
@@ -149,6 +157,9 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   <input type="file" name="image" accept='image/*' onchange="previewImage(this);">
                   <input name="food" value="1" type="hidden" />
                   <input type="date" name="watch" min="2022-01-01">
+
+                  
+
                   </form>
                   <p>
                   <?php for($i = 0; $i < count($images); $i++): ?>
@@ -187,9 +198,9 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   }
                   </script>
                 <div class="portfolio-info">
-                  <h3><a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1">朝</a></h3>
+                  <h3><a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" >朝食</a></h3>
                   <div>
-                    <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bi bi-plus"></i></a>
+                    <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" ><i class="bi bi-plus"></i></a>
                     <a href="portfolio-details.html" title="Details"><i class="bi bi-link"></i></a>
                   </div>
                 </div>
@@ -199,10 +210,12 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
             <div class="col-lg-4 col-md-6 portfolio-item filter-app">
               <div class="portfolio-wrap">
                 <form  method="post" enctype="multipart/form-data">
+                  <!-- 写真に与える情報を入力 -->
                   <button id="hozon" type="submit" class="btn btn-primary">保存</button>
                   <input type="file" name="image" accept='image/*' onchange="previewImage2(this);">
                   <input name="food" value="2" type="hidden" />
                   <input type="date" name="watch" min="2022-01-01">
+
                   </form>
                   <p>
                   <?php for($i = 0; $i < count($images); $i++): ?>
@@ -237,7 +250,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   }
                   </script>
                 <div class="portfolio-info">
-                  <h3><a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2">昼</a></h3>
+                  <h3><a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2">昼食</a></h3>
                   <div>
                     <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bi bi-plus"></i></a>
                     <a href="portfolio-details.html" title="Details"><i class="bi bi-link"></i></a>
@@ -288,7 +301,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   }
                   </script>
                 <div class="portfolio-info">
-                  <h3><a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3">夜</a></h3>
+                  <h3><a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3">夜食</a></h3>
                   <div>
                     <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bi bi-plus"></i></a>
                     <a href="portfolio-details.html" title="Details"><i class="bi bi-link"></i></a>
