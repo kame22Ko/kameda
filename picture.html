@@ -1,62 +1,6 @@
-<?php
-// date_default_timezone_set('Asia/Tokyo');
-// $time = intval(date('H'));
-// $time = new DateTime();
-// echo $time->format('Y-m-d');
-?>
-
-<?php
-require_once('k_functions.php');
-
-$pdo = connectDB();
-date_default_timezone_set('Asia/Tokyo');
-// $time = intval(date('H'));
-$time = new DateTime('now');
-$time2 = $time->format("Y-m-d");
-
-
-if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-    $sql = 'SELECT * FROM images WHERE watch = :time2 AND (food = "1" OR food = "2" OR food = "3")';
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(':time2', $time2, PDO::PARAM_STR);
-    $stmt->execute();
-    $images = $stmt->fetchAll();
-
-    
-} else {
-    // 画像を保存
-    if (!empty($_FILES['image']['name'])) {
-        $name = $_FILES['image']['name'];
-        $type = $_FILES['image']['type'];
-        $content = file_get_contents($_FILES['image']['tmp_name']);
-        $size = $_FILES['image']['size'];
-        $food = "";
-        $food = $_POST['food'];
-        $watch = "";
-        $watch = $_POST['watch'];
-        
-        $sql = 'INSERT INTO images(image_name, image_type, image_content, image_size, food, watch, created_at)
-                VALUES (:image_name, :image_type, :image_content, :image_size, :food, :watch ,now())';
-
-        
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(':image_name', $name, PDO::PARAM_STR);
-        $stmt->bindValue(':image_type', $type, PDO::PARAM_STR);
-        $stmt->bindValue(':image_content', $content, PDO::PARAM_STR);
-        $stmt->bindValue(':image_size', $size, PDO::PARAM_INT);
-        $stmt->bindValue(':food', $food, PDO::PARAM_STR);
-        $stmt->bindValue(':watch', $watch, PDO::PARAM_STR);
-        $stmt->execute();
-        
-    }
-    header('Location: picture.php');
-    exit();
-}
-// header('Location:picture.html');
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -121,12 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
       <h1>Welcome to Health First</h1>
       <h2>私たちは、健康を一番に才能のあるWebデザインのチームです。</h2>
       <a href="#about" class="btn-get-started scrollto">はじめよう！</a>
-        <?php
-          $time = new DateTime('now');
-          echo $time->format('Y-m-d');
-        ?>
     </div>
-    
   </section><!-- #hero -->
 
   <main id="main">
@@ -156,25 +95,10 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
               <div class="portfolio-wrap">
                 <!--<img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">-->
                 <form  method="post" enctype="multipart/form-data">
-                  <button id="hozon" type="submit" class="btn btn-primary">保存</button>
                   <input type="file" name="image" accept='image/*' onchange="previewImage(this);">
-                  <input name="food" value="1" type="hidden" />
-                  <input type="date" name="watch" min="2022-01-01">
+                  <button id="hozon" type="submit" class="btn btn-primary" formaction="http://localhost/kame/k_tuika.php">保存</button>
                   </form>
                   <p>
-                  <?php for($i = 0; $i < count($images); $i++): ?>
-                    <?php if($images[$i]['food'] == "1") :?>
-                      <li class="media mt-5">
-                          <a href="#lightbox" data-toggle="modal" data-slide-to="<?= $i; ?>">
-                              <img src="k_image.php?id=<?= $images[$i]['id']; ?>" width="400" height="280" class="mr-3">
-                          </a>
-                          <div class="media-body">
-                              <h5><?= $images[$i]['image_name']; ?> (<?= number_format($images[$i]['image_size']/1000, 2); ?> KB)</h5>
-                              <a href="javascript:void(0);" onclick="var ok = confirm('削除しますか？'); if (ok) location.href='k_delete.php?id=<?= $images[$i]['id']; ?>'"><i class="far fa-trash-alt"></i> 削除</a>
-                          </div>
-                      </li>
-                      <?php endif; ?>
-                  <?php endfor; ?>
                   <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="img-fluid" alt="" >
                   </p>
                   <script>
@@ -200,28 +124,11 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
             <div class="col-lg-4 col-md-6 portfolio-item filter-web">
               <div class="portfolio-wrap">
                 <!--<img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">-->
-                <form  method="post" enctype="multipart/form-data">
-                  <button id="hozon" type="submit" class="btn btn-primary">保存</button>
-                  <input type="file" name="image" accept='image/*' onchange="previewImage(this);">
-                  <input name="food" value="2" type="hidden" />
-                  <input type="date" name="watch" min="2022-01-01">
+                <form>
+                  <input type="file" accept='image/*' onchange="previewImage2(this);">
                   </form>
                   <p>
-                  <?php for($i = 0; $i < count($images); $i++): ?>
-                    <?php if($images[$i]['food'] == "2") :?>
-                      <li class="media mt-5">
-                          <a href="#lightbox" data-toggle="modal" data-slide-to="<?= $i; ?>">
-                              <img src="k_image.php?id=<?= $images[$i]['id']; ?>" width="400" height="280" class="mr-3">
-                          </a>
-                          <div class="media-body">
-                              <h5><?= $images[$i]['image_name']; ?> (<?= number_format($images[$i]['image_size']/1000, 2); ?> KB)</h5>
-                              <a href="javascript:void(0);" onclick="var ok = confirm('削除しますか？'); if (ok) location.href='k_delete.php?id=<?= $images[$i]['id']; ?>'"><i class="far fa-trash-alt"></i> 削除</a>
-                          </div>
-                      </li>
-                      <?php endif; ?>
-                  <?php endfor; ?>
                   <img id="preview2" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="img-fluid" alt="" >
-                  <!-- <img src="image.php?id=<?= $images[$i]['id']; ?>" width="100" height="auto" class="mr-3"> -->
                   </p>
                   <script>
                   function previewImage2(obj)
@@ -234,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   }
                   </script>
                 <div class="portfolio-info">
-                  <h3><a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3">App 2</a></h3>
+                  <h3><a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3">Web 3</a></h3>
                   <div>
                     <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bi bi-plus"></i></a>
                     <a href="portfolio-details.html" title="Details"><i class="bi bi-link"></i></a>
@@ -246,26 +153,10 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
             <div class="col-lg-4 col-md-6 portfolio-item filter-app">
               <div class="portfolio-wrap">
                 <!--<img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">-->
-                <form  method="post" enctype="multipart/form-data">
-                  <button id="hozon" type="submit" class="btn btn-primary">保存</button>
-                  <input type="file" name="image" accept='image/*' onchange="previewImage(this);">
-                  <input name="food" value="3" type="hidden" />
-                  <input type="date" name="watch" min="2022-01-01">
+                <form>
+                  <input type="file" accept='image/*' onchange="previewImage3(this);">
                   </form>
                   <p>
-                  <?php for($i = 0; $i < count($images); $i++): ?>
-                    <?php if($images[$i]['food'] == "3") :?>
-                      <li class="media mt-5">
-                          <a href="#lightbox" data-toggle="modal" data-slide-to="<?= $i; ?>">
-                              <img src="k_image.php?id=<?= $images[$i]['id']; ?>" width="400" height="280" class="mr-3">
-                          </a>
-                          <div class="media-body">
-                              <h5><?= $images[$i]['image_name']; ?> (<?= number_format($images[$i]['image_size']/1000, 2); ?> KB)</h5>
-                              <a href="javascript:void(0);" onclick="var ok = confirm('削除しますか？'); if (ok) location.href='k_delete.php?id=<?= $images[$i]['id']; ?>'"><i class="far fa-trash-alt"></i> 削除</a>
-                          </div>
-                      </li>
-                      <?php endif; ?>
-                  <?php endfor; ?>
                   <img id="preview3" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="img-fluid" alt="" >
                   </p>
                   <script>
@@ -279,7 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   }
                   </script>
                 <div class="portfolio-info">
-                  <h3><a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2">App 3</a></h3>
+                  <h3><a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2">App 2</a></h3>
                   <div>
                     <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bi bi-plus"></i></a>
                     <a href="portfolio-details.html" title="Details"><i class="bi bi-link"></i></a>
@@ -308,7 +199,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   }
                   </script>
                 <div class="portfolio-info">
-                  <h3><a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2">App 4</a></h3>
+                  <h3><a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2">Card 2</a></h3>
                   <div>
                     <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bi bi-plus"></i></a>
                     <a href="portfolio-details.html" title="Details"><i class="bi bi-link"></i></a>
@@ -337,7 +228,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   }
                   </script>
                 <div class="portfolio-info">
-                  <h3><a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2">App 5</a></h3>
+                  <h3><a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2">Web 2</a></h3>
                   <div>
                     <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bi bi-plus"></i></a>
                     <a href="portfolio-details.html" title="Details"><i class="bi bi-link"></i></a>
@@ -366,7 +257,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   }
                   </script>
                 <div class="portfolio-info">
-                  <h3><a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3">App 6</a></h3>
+                  <h3><a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3">App 3</a></h3>
                   <div>
                     <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bi bi-plus"></i></a>
                     <a href="portfolio-details.html" title="Details"><i class="bi bi-link"></i></a>
@@ -395,7 +286,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   }
                   </script>
                 <div class="portfolio-info">
-                  <h3><a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1">App 7</a></h3>
+                  <h3><a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1">Card 1</a></h3>
                   <div>
                     <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bi bi-plus"></i></a>
                     <a href="portfolio-details.html" title="Details"><i class="bi bi-link"></i></a>
@@ -424,7 +315,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   }
                   </script>
                 <div class="portfolio-info">
-                  <h3><a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3">App 8</a></h3>
+                  <h3><a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3">Card 3</a></h3>
                   <div>
                     <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bi bi-plus"></i></a>
                     <a href="portfolio-details.html" title="Details"><i class="bi bi-link"></i></a>
@@ -453,7 +344,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   }
                   </script>
                 <div class="portfolio-info">
-                  <h3><a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 1">App 9</a></h3>
+                  <h3><a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 1">Web 1</a></h3>
                   <div>
                     <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 1"><i class="bi bi-plus"></i></a>
                     <a href="portfolio-details.html" title="Details"><i class="bi bi-link"></i></a>

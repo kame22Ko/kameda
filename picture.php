@@ -1,4 +1,13 @@
 <?php
+session_start ();
+if(isset($_SESSION['name'])){
+    
+  }else{
+    header('refresh:0;http://localhost/kame/login.html');
+    exit;
+}
+?>
+<?php
 require_once('k_functions.php');
 
 $pdo = connectDB();
@@ -11,9 +20,12 @@ $ko = 0;
 $k = 0;
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-    $sql = 'SELECT * FROM images WHERE watch = :time2 AND (food = "1" OR food = "2" OR food = "3")';
+    // session_start ();
+    $id1 = $_SESSION['id'];        
+    $sql = 'SELECT * FROM images WHERE watch = :time2 AND use_id = :id1';
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':time2', $time2, PDO::PARAM_STR);
+    $stmt->bindValue(':id1', $id1, PDO::PARAM_INT);
     $stmt->execute();
     $images = $stmt->fetchAll();
 
@@ -25,10 +37,18 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         $type = $_FILES['image']['type'];
         $content = file_get_contents($_FILES['image']['tmp_name']);
         $size = $_FILES['image']['size'];
+        // session_start ();
+        $use_id = $_SESSION['id'];
         $food = "";
         $food = $_POST['food'];
         $watch = "";
         $watch = $_POST['watch'];
+        $food_time = "";
+        $food_time = $_POST['food_time'];
+        $evaluation = "";
+        $evaluation = $_POST['evaluation'];
+        $memo = "";
+        $memo = $_POST['memo'];
 
         //同じ値の写真が存在するかの確認
         $sql = 'SELECT * FROM images WHERE watch = :watch1 AND (food = :food1 )';
@@ -40,22 +60,27 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
         //写真がすでに入っている場合にはじく
         if($images == null){
-          $sql = 'INSERT INTO images(image_name, image_type, image_content, image_size, food, watch, created_at)
-                VALUES (:image_name, :image_type, :image_content, :image_size, :food, :watch ,now())'; 
+          $sql = 'INSERT INTO images(image_name, image_type, image_content, image_size, food, watch, use_id, food_time, evaluation, memo, created_at)
+                VALUES (:image_name, :image_type, :image_content, :image_size, :food, :watch, :use_id, :food_time, :evaluation, :memo, now())'; 
           $stmt = $pdo->prepare($sql);
           $stmt->bindValue(':image_name', $name, PDO::PARAM_STR);
           $stmt->bindValue(':image_type', $type, PDO::PARAM_STR);
           $stmt->bindValue(':image_content', $content, PDO::PARAM_STR);
           $stmt->bindValue(':image_size', $size, PDO::PARAM_INT);
           $stmt->bindValue(':food', $food, PDO::PARAM_STR);
+          $stmt->bindValue(':use_id', $use_id, PDO::PARAM_INT);
           $stmt->bindValue(':watch', $watch, PDO::PARAM_STR);
+          $stmt->bindValue(':food_time', $food_time, PDO::PARAM_STR);
+          $stmt->bindValue(':evaluation', $evaluation, PDO::PARAM_STR);
+          $stmt->bindValue(':memo', $memo, PDO::PARAM_STR);
           $stmt->execute();         
+
         }else {
           echo '画像がすでに入っています';
         }
-    }
-    header('Location: picture.php');
-    exit();
+      }
+      header('Location: picture.php');
+      exit();
 }
 // header('Location:picture.html');
 ?>
@@ -107,9 +132,9 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="index.html">ホーム画面</a></li>
-          <li><a class="nav-link scrollto" href="form.html">お問い合わせ</a></li>
-          <li><a href="login.html">ログイン</a></li>
+          <li><a class="nav-link scrollto active" href="indexs.php">ホーム画面</a></li>
+          <li><a class="nav-link scrollto" href="form2.php">お問い合わせ</a></li>
+          <li><a href="logout.php">ログアウト</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -133,16 +158,16 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         <div class="container">
   
           <div class="section-title">
-            <h2>Our Portfolio</h2>
+            <h2>食べた物をアップロードしてください</h2>
           </div>
   
           <div class="row">
             <div class="col-lg-12">
               <ul id="portfolio-flters">
-                <li data-filter="*" class="filter-active">All</li>
+                <!-- <li data-filter="*" class="filter-active">All</li>
                 <li data-filter=".filter-app">App</li>
                 <li data-filter=".filter-card">Card</li>
-                <li data-filter=".filter-web">Web</li>
+                <li data-filter=".filter-web">Web</li> -->
               </ul>
             </div>
           </div>
@@ -157,10 +182,12 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   <input type="file" name="image" accept='image/*' onchange="previewImage(this);">
                   <input name="food" value="1" type="hidden" />
                   <input type="date" name="watch" min="2022-01-01">
+                  <label for="scheduled-time">朝食を食べた時間</label>
+                  <input type="time" name="food_time" value="06:00">
 
                   
 
-                  </form>
+                  
                   <p>
                   <?php for($i = 0; $i < count($images); $i++): ?>
                     <!-- 写真全部を取得 -->
@@ -176,13 +203,17 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                               <a href="javascript:void(0);" onclick="var ok = confirm('削除しますか？'); if (ok) location.href='k_delete.php?id=<?= $images[$i]['id']; ?>'"><i class="far fa-trash-alt"></i> 削除</a>
                           </div>
                           <?php $koko += 1?>
+                          <div class="food3">
+                            この食事の評価は
+                            <?= $images[$i]['evaluation']; ?>
+                            <br>
+                            ・メモ
+                            <br>
+                            <?= $images[$i]['memo']; ?>
+                          </div>  
                     </li>
                     <?php endif; ?>
                   <?php endfor; ?>
-
-                  <?php if($koko == 0) :?>
-                    <img src="assets/img/portfolio/noPhoto.png" class="img-fluid" alt="">
-                  <?php endif; ?>
 
                   <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="img-fluid" alt="" >
                   <!-- <canvas id="preview" style="max-width:300px;"></canvas> -->
@@ -204,6 +235,22 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                     <a href="portfolio-details.html" title="Details"><i class="bi bi-link"></i></a>
                   </div>
                 </div>
+                <?php if($koko == 0) :?>
+                      <img src="assets/img/portfolio/noPhoto.png" class="img-fluid" alt="">
+                      <div class="food">
+                      <h5>・食事を５段階評価して下さい</h5>
+                      食事が健康的かを基準にして下さい<br>
+                      <input type="radio" name="evaluation" value="最悪">最悪
+                      <input type="radio" name="evaluation" value="良くない">良くない
+                      <input type="radio" name="evaluation" value="普通">普通
+                      <input type="radio" name="evaluation" value="良い">良い
+                      <input type="radio" name="evaluation" value="最高">最高
+                      <br>
+                      </div>
+                      <textarea name="memo" class="newText" cols="33" rows="2" placeholder="100文字制限です。" maxlength="100"></textarea>
+                      <br>
+                    <?php endif; ?>
+                </form>
               </div>
             </div>
   
@@ -215,8 +262,9 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   <input type="file" name="image" accept='image/*' onchange="previewImage2(this);">
                   <input name="food" value="2" type="hidden" />
                   <input type="date" name="watch" min="2022-01-01">
-
-                  </form>
+                  <label for="scheduled-time">朝食を食べた時間</label>
+                  <input type="time" name="food_time" value="12:00">
+                  
                   <p>
                   <?php for($i = 0; $i < count($images); $i++): ?>
                     <?php if($images[$i]['food'] == "2") :?>
@@ -229,13 +277,18 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                               <a href="javascript:void(0);" onclick="var ok = confirm('削除しますか？'); if (ok) location.href='k_delete.php?id=<?= $images[$i]['id']; ?>'"><i class="far fa-trash-alt"></i> 削除</a>
                           </div>
                           <?php $ko += 1?>
+                          <div class="food3">
+                            この食事の評価は
+                            <?= $images[$i]['evaluation']; ?>
+                            <br>
+                            ・メモ
+                            <br>
+                            <?= $images[$i]['memo']; ?>
+                          </div> 
                       </li>
                       <?php endif; ?>
                   <?php endfor; ?>
 
-                  <?php if($ko == 0) :?>
-                    <img src="assets/img/portfolio/noPhoto.png" class="img-fluid" alt="">
-                  <?php endif; ?>
 
                   <img id="preview3" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="img-fluid" alt="" >
                   </p>
@@ -256,6 +309,22 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                     <a href="portfolio-details.html" title="Details"><i class="bi bi-link"></i></a>
                   </div>
                 </div>
+                <?php if($ko == 0) :?>
+                      <img src="assets/img/portfolio/noPhoto.png" class="img-fluid" alt="">
+                      <div class="food2">
+                      <h5>・食事を５段階評価して下さい</h5>
+                      食事が健康的かを基準にして下さい<br>
+                      <input type="radio" name="evaluation" value="最悪">最悪
+                      <input type="radio" name="evaluation" value="良くない">良くない
+                      <input type="radio" name="evaluation" value="普通">普通
+                      <input type="radio" name="evaluation" value="良い">良い
+                      <input type="radio" name="evaluation" value="最高">最高
+                      <br>
+                      </div>
+                      <textarea name="memo" class="newText" cols="33" rows="2" placeholder="100文字制限です。" maxlength="100"></textarea>
+                      <br>
+                    <?php endif; ?>
+                </form>
               </div>
             </div>
   
@@ -267,7 +336,9 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   <input type="file" name="image" accept='image/*' onchange="previewImage3(this);">
                   <input name="food" value="3" type="hidden" />
                   <input type="date" name="watch" min="2022-01-01">
-                  </form>
+                  <label for="scheduled-time">朝食を食べた時間</label>
+                  <input type="time" name="food_time" value="18:00">
+          
                   <p>
                   <?php for($i = 0; $i < count($images); $i++): ?>
                     <?php if($images[$i]['food'] == "3") :?>
@@ -280,13 +351,18 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                               <a href="javascript:void(0);" onclick="var ok = confirm('削除しますか？'); if (ok) location.href='k_delete.php?id=<?= $images[$i]['id']; ?>'"><i class="far fa-trash-alt"></i> 削除</a>
                           </div>
                           <?php $k += 1?>
+                          <div class="food3">
+                            この食事の評価は
+                            <?= $images[$i]['evaluation']; ?>
+                            <br>
+                            ・メモ
+                            <br>
+                            <?= $images[$i]['memo']; ?>
+                          </div> 
                       </li>
                       <?php endif; ?>
                   <?php endfor; ?>
 
-                  <?php if($k == 0) :?>
-                    <img src="assets/img/portfolio/noPhoto.png" class="img-fluid" alt="">
-                  <?php endif; ?>
 
                   <img id="preview6" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" class="img-fluid" alt="" >
                   </p>
@@ -307,11 +383,28 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                     <a href="portfolio-details.html" title="Details"><i class="bi bi-link"></i></a>
                   </div>
                 </div>
+                <?php if($k == 0) :?>
+                      <img src="assets/img/portfolio/noPhoto.png" class="img-fluid" alt="">
+                      <div class="food3">
+                      <h5>・食事を５段階評価して下さい</h5>
+                      食事が健康的かを基準にして下さい<br>
+                      <input type="radio" name="evaluation" value="最悪">最悪
+                      <input type="radio" name="evaluation" value="良くない">良くない
+                      <input type="radio" name="evaluation" value="普通">普通
+                      <input type="radio" name="evaluation" value="良い">良い
+                      <input type="radio" name="evaluation" value="最高">最高
+                      <br>
+                      </div>
+                      <textarea name="memo" class="newText" cols="33" rows="2" placeholder="100文字制限です。" maxlength="100"></textarea>
+                      <br>
+                    <?php endif; ?>
+                </form>
               </div>
+              
             </div>
           </div>
-  
         </div>
+  </div>
       </section><!-- End Our Portfolio Section -->
     
   <!-- Vendor JS Files -->
@@ -323,6 +416,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  
 
 </body>
 

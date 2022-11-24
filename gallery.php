@@ -1,6 +1,14 @@
 <?php
+session_start ();
+if(isset($_SESSION['name'])){
+    // echo "ようこそ、".$_SESSION['name']."さん！";
+  }else{
+    header('refresh:0;http://localhost/kame/login.html');
+    exit;
+}
+?>
+<?php
 require_once('k_functions.php');
-
 $pdo = connectDB();
 date_default_timezone_set('Asia/Tokyo');
 // $time = intval(date('H'));
@@ -11,7 +19,7 @@ $h = 0;
 $h1 = 0;
 $h2 = 0;
 
-
+session_start ();
 $aaa = $_POST['aaa'];
 $bbb = $_POST['bbb'];
 $aaa1 = new DateTime($aaa);
@@ -22,19 +30,23 @@ $bbb2 = $bbb1->format("Y-m-d");
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     //初めにログインしたら今日の写真を表示する
-    $sql = 'SELECT * FROM images WHERE watch = :time2 AND (food = "1" OR food = "2" OR food = "3")';
+    $id1 = $_SESSION['id'];  
+    $sql = 'SELECT * FROM images WHERE watch = :time2 AND (food = "1" OR food = "2" OR food = "3") AND use_id = :id1';
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':time2', $time, PDO::PARAM_STR);
+    $stmt->bindValue(':id1', $id1, PDO::PARAM_INT);
     $stmt->execute();
     $images = $stmt->fetchAll();
 
     
 } else {
     // $sql = 'SELECT * FROM images WHERE watch = :bbb AND (food = "1" OR food = "2" OR food = "3")';
-    $sql = 'SELECT * FROM images WHERE watch BETWEEN :aaa AND :bbb AND (food = "1" OR food = "2" OR food = "3") ORDER BY watch ASC, food ASC;';
+    $id1 = $_SESSION['id'];  
+    $sql = 'SELECT * FROM images WHERE watch BETWEEN :aaa AND :bbb AND (food = "1" OR food = "2" OR food = "3") AND use_id = :id1 ORDER BY watch ASC, food ASC;';
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':bbb', $bbb2, PDO::PARAM_STR);
     $stmt->bindValue(':aaa', $aaa2, PDO::PARAM_STR);
+    $stmt->bindValue(':id1', $id1, PDO::PARAM_INT);
     $stmt->execute();
     $images = $stmt->fetchAll();
 }
@@ -90,11 +102,10 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="index.html">ホーム画面</a></li>
+          <li><a class="nav-link scrollto active" href="indexs.php">ホーム画面</a></li>
           <li><a href="picture.php">写真アップロード</a></li>
-          <li><a href="testcalendar.html">カレンダー管理</a></li>
-          <li><a class="nav-link scrollto" href="form.html">お問い合わせ</a></li>
-          <li><a href="login.html">ログイン</a></li>
+          <li><a class="nav-link scrollto" href="form2.php">お問い合わせ</a></li>
+          <li><a href="logout.html">ログアウト</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -146,9 +157,16 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                           </a>
                           <div class="media-body">
                             <h5><?= $images[$i]['watch']; ?> </h5>
-                            <h5>朝食</h5>
+                            <h5><?= $images[$i]['food_time']; ?> </h5>
+                            <h5>朝食</h5>                            
                           </div>
                           <?php $h += 1 ?>
+                          この食事の評価は
+                            <?= $images[$i]['evaluation']; ?>
+                            <br>
+                            ・メモ
+                            <br>
+                            <?= $images[$i]['memo']; ?>
                     </li>
                     <?php endif; ?>
                   <?php endfor; ?>
@@ -171,9 +189,16 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                           </a>
                           <div class="media-body">
                             <h5><?= $images[$i]['watch']; ?> </h5>
+                            <h5><?= $images[$i]['food_time']; ?> </h5>
                             <h5>昼食</h5>
                           </div>
                           <?php $h1 += 1 ?>
+                          この食事の評価は
+                            <?= $images[$i]['evaluation']; ?>
+                            <br>
+                            ・メモ
+                            <br>
+                            <?= $images[$i]['memo']; ?>
                     </li>
                     <?php endif; ?>
                   <?php endfor; ?>
@@ -196,9 +221,16 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                       </a>
                       <div class="media-body">
                         <h5><?= $images[$i]['watch']; ?> </h5>
+                        <h5><?= $images[$i]['food_time']; ?> </h5>
                         <h5>夜食</h5>
                       </div>
                       <?php $h2 += 1 ?>
+                      この食事の評価は
+                            <?= $images[$i]['evaluation']; ?>
+                            <br>
+                            ・メモ
+                            <br>
+                            <?= $images[$i]['memo']; ?>
                     </li>
                 <?php endif; ?>
               <?php endfor; ?>
@@ -218,8 +250,6 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
           </div>
 
             </div>
-        
-
       </div>
     </section><!-- End Our Team Section -->
     

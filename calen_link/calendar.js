@@ -1,4 +1,3 @@
-
 /*
    -----------------------------------------------------
    カレンダー（リンク機能付き）
@@ -20,7 +19,6 @@ function linkdaySet(MM,DD,ACT,URL,TTL){
 	this['link' + MM + 'MM']['d' + DD]['act'] = ACT;
 	this['link' + MM + 'MM']['d' + DD]['url'] = URL;
 	this['link' + MM + 'MM']['d' + DD]['ttl'] = TTL;
-
 }
 
 function showCalen(MM){
@@ -59,13 +57,13 @@ function linkGo(MM,DD){
 		// nameとvalueにそれぞれPOSTしたいパラメーターを追加
 		reqElm.type = 'hidden';
 		reqElm.name = "bbb";
-		reqElm.value = nowYear+'-'+MM+'-'+DD;//クリックした日付の値にできるようにする（下のも同じ値になるように）
+		reqElm.value = theYear+'-'+MM+'-'+DD;//クリックした日付の値にできるようにする（下のも同じ値になるように）
 
 		var reqElm2 = document.createElement('input');
 
 		reqElm2.type = 'hidden';
 		reqElm2.name = "aaa";
-		reqElm2.value = nowYear+'-'+MM+'-'+DD;//クリックした日付の値にできるようにする
+		reqElm2.value = theYear+'-'+MM+'-'+DD;//クリックした日付の値にできるようにする
 
 		// フォームタグにinputタグを追加（formの中にinputを入れる）
 		form.appendChild(reqElm);
@@ -107,7 +105,7 @@ for (let i = 1; i < 32; i++){
 	linkdaySet(1,i,1,'localhost/kame/gallery.php','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
 };
 for (let i = 1; i < 30; i++){
-	linkdaySet(2,i,1,'localhost/kame/gallery.phpl','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
+	linkdaySet(2,i,1,'localhost/kame/gallery.php','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
 };
 for (let i = 1; i < 32; i++){
 	linkdaySet(3,i,1,'localhost/kame/gallery.php','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
@@ -139,22 +137,6 @@ for (let i = 1; i < 32; i++){
 for (let i = 1; i < 32; i++){
 	linkdaySet(12,i,1,'localhost/kame/gallery.php','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
 };
-
-// linkdaySet(1,1,1,'localhost/kame/gallery.html','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
-// linkdaySet(2,8,1,'www.yahoo.co.jp/','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
-// linkdaySet(3,1,1,'www.yahoo.co.jp/','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
-// linkdaySet(4,8,1,'www.yahoo.co.jp/','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
-// linkdaySet(5,5,1,'www.yahoo.co.jp/','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
-// linkdaySet(6,1,1,'www.yahoo.co.jp/','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
-// linkdaySet(7,8,1,'www.yahoo.co.jp/','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
-// linkdaySet(8,5,1,'www.yahoo.co.jp/','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
-// linkdaySet(9,1,1,'www.yahoo.co.jp/','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
-// linkdaySet(10,8,1,'localhost/student/kame/gallery.php','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
-// //11月のリンク(左側が月の値で、真ん中が日付、右側がこのリンクに飛ばす役割をしている)
-// linkdaySet(11,1,1,'localhost/kame/gallery.php','');
-// linkdaySet(11,2,1,'localhost/kame/gallery.php','');
-// linkdaySet(12,1,1,'www.yahoo.co.jp/','Yahoo!へのリンクです。<br>自ウィンドウで移動します。');
-
 
 //ポップアップウィンドウの幅と高さを指定
 winWW = 400;	//幅

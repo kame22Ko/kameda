@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta  http-equiv="Refresh" content="5;URL=login.html">
+<meta charset="utf-8">
 <title>レコード追加</title>
 <link href="../../../css/style.css" rel="stylesheet">
 <!-- テーブル用のスタイルシート -->
@@ -10,7 +10,7 @@
 <body>
 <div>
   <?php
-  $gobackURL = "login.html";
+  $gobackURL = "login_form.php";
   $name = $_POST['name'];
   $age = $_POST['age'];
   $sex = $_POST['sex'];
@@ -42,7 +42,33 @@
       $stm = $pdo->prepare($sql);
       // SQL文を実行する
       $stm->execute();
-
+      // 結果の取得（連想配列で受け取る）
+      $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+      // テーブルのタイトル行
+      echo "<table>";
+      echo "<thead><tr>";
+      echo "<th>", "ID", "</th>";
+      echo "<th>", "名前", "</th>";
+      echo "<th>", "年齢", "</th>";
+      echo "<th>", "性別", "</th>";
+      echo "<th>", "メールアドレス", "</th>";
+      echo "<th>", "パスワード", "</th>";
+      echo "</tr></thead>";
+      // 値を取り出して行に表示する
+      echo "<tbody>";
+      foreach ($result as $row) {
+        // １行ずつテーブルに入れる
+        echo "<tr>";
+        echo "<td>", $row['id'], "</td>";
+        echo "<td>", $row['name'], "</td>";
+        echo "<td>", $row['age'], "</td>";
+        echo "<td>", $row['sex'], "</td>";
+        echo "<td>", $row['mail'], "</td>";
+        echo "<td>", $row['password'], "</td>";
+        echo "</tr>";
+      }
+      echo "</tbody>";
+      echo "</table>";
     } else {
       echo '<span class="error">追加エラーがありました。</span><br>';
     };
@@ -52,8 +78,6 @@
   }
   ?>
   <hr>
-  <p>登録ができました</p>
-  <p>5秒後にログインページに接続します。</p>
   <p><a href="<?php echo $gobackURL ?>">戻る</a></p>
 </div>
 </body>

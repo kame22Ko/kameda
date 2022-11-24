@@ -1,3 +1,12 @@
+<?php
+session_start ();
+if(isset($_SESSION['name'])){
+    // echo "ようこそ、".$_SESSION['name']."さん！";
+  }else{
+    header('refresh:0;http://localhost/kame/login.html');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -40,17 +49,15 @@
     <div class="container d-flex align-items-center">
 
       <div class="logo me-auto">
-        <h1><a href="index.html">マイページ</a></h1>
+        <h1><a href="index.html">Health First</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="index.html">ホーム画面</a></li>
-          <li><a class="nav-link scrollto" href="#about">紹介</a></li>
-          <li><a class="nav-link scrollto" href="#services">サービス</a></li>
-          <li><a class="nav-link scrollto" href="form.html">お問い合わせ</a></li>
+          <li><a class="nav-link scrollto active" href="indexs.php">ホーム画面</a></li>
+          <li><a href="picture.php">写真アップロード</a></li>
           <li><a class="nav-link scrollto" href="logout.php">ログアウト</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -58,13 +65,36 @@
 
     </div>
   </header><!-- End #header -->
-
-  <!-- ======= Section ======= -->
-  <section class="mypage">
-    <h1 style="padding: 10rem;">ようこそ（ユーザーネーム）さん。</h1>
-  </section>
-
-    
+  <main id="main">
+    <form method="post" name="form" onsubmit="return validate()"><center>
+      <h1 style="margin-top: 120px; margin-bottom: 10px;">お問い合わせ</h1>
+      <table>
+          <tr>
+              <th class="hissu"><label>氏名</label></th>
+              <td><input class="form-control" name="name1" type="text" value="" placeholder="氏名"></td>
+          </tr>
+          <tr>
+              <th class="ninni"><label>Mail</label></th>
+              <td><input  class="form-control" name="EMail" type="text" value="" placeholder="メールアドレス"></td>
+          </tr>
+          <tr>
+              <th class="ninni"><label>年齢</label></th>
+              <td><input class="form-control" name="age1" type="number" class="smallinput" value="" placeholder="年齢"></td>
+          </tr>
+          <tr>
+              <th class="hissu"><label>内容</label></th>
+              <td><textarea class="form-control" name="contents" value="" placeholder="内容"></textarea></td>
+          </tr>
+      </table>
+      <div class="buttonwrap">
+          <!-- <input type="button" class="btn btn-secondary" value="戻る">   -->
+          <!-- <input type="submit" formaction="http://localhost/kame/hair/index.html" value="送信する"> -->
+          <button type="submit" name="button" formaction="http://localhost/kame/indexs.php" class="btn btn-secondary"  style="width: 130px;">戻る</button>
+          <!-- <input type="submit" class="btn btn-danger" value="送信">   -->
+          <button type="submit" name="button" formaction="http://localhost/kame/form2.php" class="btn btn-danger"style="width: 130px;" >送信</button>
+      </div>
+    </center></form>
+  </main>
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>

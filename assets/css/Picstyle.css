@@ -1879,3 +1879,21 @@ table.fc-header{
     margin-bottom: 30px;
   }
 }
+
+.food {
+  color: #03a9f3;
+}
+
+.food2 {
+  color: #03a9f3;
+}
+
+.food3 {
+  color: #03a9f3;
+}
+
+.newText {
+  resize: none;
+  width: 100%;
+  height:100px;
+}

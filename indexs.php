@@ -1,3 +1,52 @@
+<?php
+session_start ();
+if(isset($_SESSION['name'])){
+    echo "ようこそ、".$_SESSION['name']."さん！";
+  }else{
+    header('refresh:0;http://localhost/kame/login.html');
+    exit;
+}
+?>
+<?php
+require_once('k_functions.php');
+
+$pdo = connectDB();
+date_default_timezone_set('Asia/Tokyo');
+// $time = intval(date('H'));
+$time = new DateTime('now');
+$time2 = $time->format("Y-m-d");
+$bat1 = 0;
+$bat2 = 0;
+$bat3 = 0;
+$bat4 = 0;
+$bat5 = 0;
+
+if  ( $_SERVER['REQUEST_METHOD'] !='POST'){
+    // session_start ();
+    $id1 = $_SESSION['id'];        
+    $sql = 'SELECT * FROM images WHERE watch <= :time2 AND use_id = :id1';
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':time2', $time2, PDO::PARAM_STR);
+    $stmt->bindValue(':id1', $id1, PDO::PARAM_INT);
+    $stmt->execute();
+    $images = $stmt->fetchAll();
+
+     for($i = 0; $i < count($images); $i++){
+        if($images[$i]['evaluation'] == "最悪"){
+            $bat1 += 1 ;
+        }elseif($images[$i]['evaluation'] == "良くない"){
+            $bat2 += 1 ;
+        }elseif($images[$i]['evaluation'] == "普通"){
+            $bat3 += 1 ;
+        }elseif($images[$i]['evaluation'] == "良い"){
+            $bat4 += 1 ;
+        }elseif($images[$i]['evaluation'] == "最高"){
+            $bat5 += 1 ;
+        }    
+}
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -24,7 +73,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
+  <link rel="stylesheet" type="text/css" href="calen_link/calendar.css">
   <!-- =======================================================
   * Template Name: Amoeba - v4.8.0
   * Template URL: https://bootstrapmade.com/free-one-page-bootstrap-template-amoeba/
@@ -48,8 +97,9 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">ホーム画面</a></li>
-          <li><a href="form.html">お問い合わせ</a></li>
-          <li><a href="login.html">ログイン</a></li>
+          <li><a href="form2.php">お問い合わせ</a></li>
+          <li><a href="picture.php">写真アップロード</a></li>
+          <li><a href="logout.php">ログアウト</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -78,22 +128,31 @@
 
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2">
-            <img src="assets/img/about-img.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1">
-            <h3>私たちのチームは、貴方の健康を促進するWebサイトを作成しました。</h3>
-            <p class="fst-italic">
-              私たち自身も健康を一番に活動しています。
-            </p>
-            <ul>
-              <li><i class="bi bi-check2-circle"></i>私達は貴方から利益を受け取ろうと活動していません。ゆえに働きません。</li>
-              <li><i class="bi bi-check2-circle"></i> 貴方の積極的な活動は疑念や痛みを育み、喜びを伴います。</li>
-              <li><i class="bi bi-check2-circle"></i> 欲望に目がくらんでいない限り、彼らは中にいる義務を達成する者。</li>
-            </ul>
-          </div>
-        </div>
+        <div id="calendar"></div>
+			  <!--<script src="calendar.js"></script>-->
+        <span id="calenArea"></span>
+        <script type="text/javascript" src="calen_link/calendar.js"></script>
+            </div>
+            <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1">
+              <h3>私たちのチームは、あたかも身体の快楽が想定されているかのように、最も価値のある快楽を提供します。</h3>
+              <p class="fst-italic">
+                私たちは健康を一番に活動しています。
+              </p>
+              <ul>
+                <h3><?php print "最低の評価をした回数は" . $bat1 ."です。" ?><br></h3>
+                <h3><?php print "良くないの評価をした回数は" . $bat2 ."です。"?><br></h3>
+                <h3><?php print "普通の評価をした回数は" . $bat3 ."です。"?><br></h3>
+                <h3><?php print "良いの評価をした回数は" . $bat4 ."です。"?><br></h3>
+                <h3><?php print "最高の評価をした回数は" . $bat5 ."です。"?><br></h3>
+ 
 
-      </div>
+                <li><i class="bi bi-check2-circle"></i>私達はそれから何らかの利益を得ることを除いて、まったく働きません</li>
+                <li><i class="bi bi-check2-circle"></i> 疑念や苛立ちを育み、喜びの叱責の痛みを持って髪の毛になりたい。</li>
+                <li><i class="bi bi-check2-circle"></i> 欲望に目がくらんでいない限り、彼らは中にいる義務を放棄した者の罪悪感の魂。</li>
+                <li><i class="bi bi-check2-circle"></i><a href="https://www.topgate.co.jp/google-calendar-how-to-use">わからない際はこちら</a></li>
+              </ul>
+            </div>
+          </div>
     </section><!-- End About Us Section -->
 
     <!-- ======= Services Section ======= -->
