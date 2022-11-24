@@ -181,7 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   <button id="hozon" type="submit" class="btn btn-primary">保存</button>
                   <input type="file" name="image" accept='image/*' onchange="previewImage(this);">
                   <input name="food" value="1" type="hidden" />
-                  <input type="date" name="watch" min="2022-01-01">
+                  <input type="date" name="watch" min="2022-01-01" value="<?php echo date('Y-m-j');?>">
                   <label for="scheduled-time">朝食を食べた時間</label>
                   <input type="time" name="food_time" value="06:00">
 
@@ -242,7 +242,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                       食事が健康的かを基準にして下さい<br>
                       <input type="radio" name="evaluation" value="最悪">最悪
                       <input type="radio" name="evaluation" value="良くない">良くない
-                      <input type="radio" name="evaluation" value="普通">普通
+                      <input type="radio" name="evaluation" value="普通" checked>普通
                       <input type="radio" name="evaluation" value="良い">良い
                       <input type="radio" name="evaluation" value="最高">最高
                       <br>
@@ -261,7 +261,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   <button id="hozon" type="submit" class="btn btn-primary">保存</button>
                   <input type="file" name="image" accept='image/*' onchange="previewImage2(this);">
                   <input name="food" value="2" type="hidden" />
-                  <input type="date" name="watch" min="2022-01-01">
+                  <input type="date" name="watch" min="2022-01-01" value="<?php echo date('Y-m-j');?>">
                   <label for="scheduled-time">朝食を食べた時間</label>
                   <input type="time" name="food_time" value="12:00">
                   
@@ -316,7 +316,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                       食事が健康的かを基準にして下さい<br>
                       <input type="radio" name="evaluation" value="最悪">最悪
                       <input type="radio" name="evaluation" value="良くない">良くない
-                      <input type="radio" name="evaluation" value="普通">普通
+                      <input type="radio" name="evaluation" value="普通" checked>普通
                       <input type="radio" name="evaluation" value="良い">良い
                       <input type="radio" name="evaluation" value="最高">最高
                       <br>
@@ -335,7 +335,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   <button id="hozon" type="submit" class="btn btn-primary">保存</button>
                   <input type="file" name="image" accept='image/*' onchange="previewImage3(this);">
                   <input name="food" value="3" type="hidden" />
-                  <input type="date" name="watch" min="2022-01-01">
+                  <input type="date" name="watch" min="2022-01-01" value="<?php echo date('Y-m-j');?>">
                   <label for="scheduled-time">朝食を食べた時間</label>
                   <input type="time" name="food_time" value="18:00">
           
@@ -390,7 +390,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                       食事が健康的かを基準にして下さい<br>
                       <input type="radio" name="evaluation" value="最悪">最悪
                       <input type="radio" name="evaluation" value="良くない">良くない
-                      <input type="radio" name="evaluation" value="普通">普通
+                      <input type="radio" name="evaluation" value="普通" checked>普通
                       <input type="radio" name="evaluation" value="良い">良い
                       <input type="radio" name="evaluation" value="最高">最高
                       <br>
