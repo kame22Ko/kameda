@@ -3,7 +3,7 @@ session_start ();
 if(isset($_SESSION['name'])){
     // echo "ようこそ、".$_SESSION['name']."さん！";
   }else{
-    header('refresh:0;http://localhost/kame/login.html');
+    header('refresh:0;login.html');
     exit;
 }
 ?>
@@ -79,7 +79,7 @@ if(isset($_SESSION['name'])){
           </tr>
           <tr>
               <th class="ninni"><label>年齢</label></th>
-              <td><input class="form-control" name="age1" type="number" class="smallinput" value="" placeholder="年齢"></td>
+              <td><input class="form-control" name="age1" type="number" class="smallinput" value="" placeholder="年齢"  min='1' ></td>
           </tr>
           <tr>
               <th class="hissu"><label>内容</label></th>
@@ -87,11 +87,8 @@ if(isset($_SESSION['name'])){
           </tr>
       </table>
       <div class="buttonwrap">
-          <!-- <input type="button" class="btn btn-secondary" value="戻る">   -->
-          <!-- <input type="submit" formaction="http://localhost/kame/hair/index.html" value="送信する"> -->
-          <button type="submit" name="button" formaction="http://localhost/kame/indexs.php" class="btn btn-secondary"  style="width: 130px;">戻る</button>
-          <!-- <input type="submit" class="btn btn-danger" value="送信">   -->
-          <button type="submit" name="button" formaction="http://localhost/kame/form2.php" class="btn btn-danger"style="width: 130px;" >送信</button>
+          <button type="submit" name="button" formaction="indexs.php" class="btn btn-secondary"  style="width: 130px;">戻る</button>
+          <button type="submit" name="button" formaction="form2_2.php" class="btn btn-danger"style="width: 130px;" >送信</button>
       </div>
     </center></form>
   </main>

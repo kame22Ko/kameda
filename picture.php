@@ -3,7 +3,7 @@ session_start ();
 if(isset($_SESSION['name'])){
     
   }else{
-    header('refresh:0;http://localhost/kame/login.html');
+    header('refresh:0;login.html');
     exit;
 }
 ?>

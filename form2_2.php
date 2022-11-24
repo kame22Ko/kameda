@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta http-equiv="Refresh" content="5;URL=indexs.html">
+  <meta http-equiv="Refresh" content="5;URL=indexs.php">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>health first</title>
   <!-- Template Main CSS File -->
@@ -13,11 +13,13 @@
 <body>
     <div>
       <?php
-      $gobackURL = "indexs.html";
+      session_start ();
+      $gobackURL = "indexs.php";
       $name1 = $_POST['name1'];
       $EMail = $_POST['EMail'];
       $age1 = $_POST['age1'];
       $contents = $_POST['contents'];
+      $id1 = $_SESSION['id']; 
       //MySQLデータベースに接続する
       try {
         $pdo = new PDO('mysql:dbname=KASEDASABA;host=localhost;charset=utf8','kame','kame');
@@ -27,7 +29,7 @@
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // SQL文を作る
-        $sql = "INSERT INTO inquery (name1, EMail, age1, contents) VALUES (:name1, :EMail, :age1, :contents)";
+        $sql = "INSERT INTO inquery (name1, EMail, age1, contents, use_id) VALUES (:name1, :EMail, :age1, :contents, :use_id)";
         // プリペアドステートメントを作る
         $stm = $pdo->prepare($sql);
         // プレースホルダに値をバインドする
@@ -35,6 +37,7 @@
         $stm->bindValue(':EMail', $EMail, PDO::PARAM_STR);
         $stm->bindValue(':age1', $age1, PDO::PARAM_INT);
         $stm->bindValue(':contents', $contents, PDO::PARAM_STR);
+        $stm->bindValue(':use_id', $id1, PDO::PARAM_INT);
 
         if ($stm->execute()){
           // レコード追加後のレコードリストを取得する
