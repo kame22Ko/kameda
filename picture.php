@@ -230,10 +230,10 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   </script>
                 <div class="portfolio-info">
                   <h3><a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" >朝食</a></h3>
-                  <div>
+                  <!-- <div>
                     <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" ><i class="bi bi-plus"></i></a>
                     <a href="portfolio-details.html" title="Details"><i class="bi bi-link"></i></a>
-                  </div>
+                  </div> -->
                 </div>
                 <?php if($koko == 0) :?>
                       <img src="assets/img/portfolio/noPhoto.png" class="img-fluid" alt="">
@@ -304,10 +304,10 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   </script>
                 <div class="portfolio-info">
                   <h3><a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2">昼食</a></h3>
-                  <div>
+                  <!-- <div>
                     <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bi bi-plus"></i></a>
                     <a href="portfolio-details.html" title="Details"><i class="bi bi-link"></i></a>
-                  </div>
+                  </div> -->
                 </div>
                 <?php if($ko == 0) :?>
                       <img src="assets/img/portfolio/noPhoto.png" class="img-fluid" alt="">
@@ -378,10 +378,10 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                   </script>
                 <div class="portfolio-info">
                   <h3><a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3">夜食</a></h3>
-                  <div>
+                  <!-- <div>
                     <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bi bi-plus"></i></a>
                     <a href="portfolio-details.html" title="Details"><i class="bi bi-link"></i></a>
-                  </div>
+                  </div> -->
                 </div>
                 <?php if($k == 0) :?>
                       <img src="assets/img/portfolio/noPhoto.png" class="img-fluid" alt="">
