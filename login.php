@@ -21,7 +21,7 @@ if ($mail != null){
         $_SESSION['id'] = $member['id'];
         echo'ログインしました。';
         // $link = '<a href="mein.php">ホーム</a>';
-        header('refresh:0;http://localhost/kame/indexs.php');
+        header('refresh:0;popup_login.html');
         exit();
     } else {
         echo 'メールアドレスもしくはパスワードが間違っています。';

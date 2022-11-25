@@ -71,19 +71,19 @@ if(isset($_SESSION['name'])){
       <table>
           <tr>
               <th class="hissu"><label>氏名</label></th>
-              <td><input class="form-control" name="name1" type="text" value="" placeholder="氏名"></td>
+              <td><input class="form-control" name="name1" type="text" value="" placeholder="氏名" required></td>
           </tr>
           <tr>
               <th class="ninni"><label>Mail</label></th>
-              <td><input  class="form-control" name="EMail" type="text" value="" placeholder="メールアドレス"></td>
+              <td><input  class="form-control" name="EMail" type="text" value="" placeholder="メールアドレス" required></td>
           </tr>
           <tr>
               <th class="ninni"><label>年齢</label></th>
-              <td><input class="form-control" name="age1" type="number" class="smallinput" value="" placeholder="年齢"  min='1' ></td>
+              <td><input class="form-control" name="age1" type="number" class="smallinput" value="" placeholder="年齢"  min='1' max='130' required></td>
           </tr>
           <tr>
               <th class="hissu"><label>内容</label></th>
-              <td><textarea class="form-control" name="contents" value="" placeholder="内容"></textarea></td>
+              <td><textarea class="form-control" name="contents" value="" placeholder="内容" required></textarea></td>
           </tr>
       </table>
       <div class="buttonwrap">
