@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta http-equiv="Refresh" content="5;URL=indexs.php">
+  <!-- <meta http-equiv="Refresh" content="0;URL=popup_meil.html"> -->
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>health first</title>
   <!-- Template Main CSS File -->
@@ -14,7 +14,6 @@
     <div>
       <?php
       session_start ();
-      // $gobackURL = "indexs.php";
       $name1 = $_POST['name1'];
       $EMail = $_POST['EMail'];
       $age1 = $_POST['age1'];
@@ -22,7 +21,7 @@
       $id1 = $_SESSION['id']; 
 
 
-      if( filter_var( $EMail,  FILTER_VALIDATE_EMAIL ) ){
+      if( filter_var( $EMail,FILTER_VALIDATE_EMAIL) ){
         //MySQLデータベースに接続する
         try {
           $pdo = new PDO('mysql:dbname=KASEDASABA;host=localhost;charset=utf8','kame','kame');
@@ -49,6 +48,7 @@
             $stm = $pdo->prepare($sql);
             // SQL文を実行する
             $stm->execute();
+            header('refresh:0;popup_meil.html');
 
           } else {
             echo '<span class="error">追加エラーがありました。</span><br>';
@@ -58,7 +58,7 @@
           echo $e->getMessage();
               }
     }else{
-      header('refresh:0;popup2.html');
+      header('refresh:0;popup_meiladress.html');
       // print_r("'$EMail'は不正な形式のメールアドレスです。");
         
     }

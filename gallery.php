@@ -20,12 +20,7 @@ $h1 = 0;
 $h2 = 0;
 
 session_start ();
-$aaa = $_POST['aaa'];
-$bbb = $_POST['bbb'];
-$aaa1 = new DateTime($aaa);
-$bbb1 = new DateTime($bbb);
-$aaa2 = $aaa1->format("Y-m-d");
-$bbb2 = $bbb1->format("Y-m-d");
+
 
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
@@ -40,6 +35,12 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
     
 } else {
+    $aaa = $_POST['aaa'];
+    $bbb = $_POST['bbb'];
+    $aaa1 = new DateTime($aaa);
+    $bbb1 = new DateTime($bbb);
+    $aaa2 = $aaa1->format("Y-m-d");
+    $bbb2 = $bbb1->format("Y-m-d");
     // $sql = 'SELECT * FROM images WHERE watch = :bbb AND (food = "1" OR food = "2" OR food = "3")';
     $id1 = $_SESSION['id'];  
     $sql = 'SELECT * FROM images WHERE watch BETWEEN :aaa AND :bbb AND (food = "1" OR food = "2" OR food = "3") AND use_id = :id1 ORDER BY watch ASC, food ASC;';
